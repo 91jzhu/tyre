@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/91jzhu/tyre/issues"
   },
-  "homepage": "https://github.com/91jzhu/tyre#readme"
+  "homepage": "https://github.com/91jzhu/tyre#readme",
+  "dependencies": {
+    "vue": "^2.6.14"
+  }
 }
