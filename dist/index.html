@@ -11,6 +11,7 @@
         padding: 0;
         box-sizing: border-box;
     }
+
     :root {
         --button-height: 32px;
         --font-size: 14px;
@@ -21,15 +22,36 @@
         --border-color: #999;
         --border-coloc-hover: #666;
     }
-    #app{margin:20px;}
-    body{font-size: var(--font-size)}</style>
+
+    #app {
+        margin: 20px;
+    }
+
+    body {
+        font-size: var(--font-size)
+    }
+    .icon {
+        width: 1em; height: 1em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+    }</style>
 
 
 <body>
 
 <div id="app">
-    <t-button></t-button>
+    <t-button>
+        按钮
+    </t-button><br>
+    <t-button icon="setting">
+        按钮
+    </t-button><br>
+    <t-button icon="setting" icon-position="right">
+        按钮
+    </t-button>
 </div>
 <script src="/app.a6a4d504.js"></script>
+<script src="//at.alicdn.com/t/font_2836712_3o1prru0c6b.js"></script>
 </body>
 </html>
