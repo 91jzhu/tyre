@@ -57,6 +57,8 @@
 }
 .t-button-group > .t-button[data-v-7d5d08] {
   border-radius: 0;
+}
+.t-button-group > .t-button[data-v-7d5d08]:not(:first-child) {
   margin-left: -1px;
 }
 .t-button-group > .t-button[data-v-7d5d08]:first-child {
