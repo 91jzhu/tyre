@@ -19,11 +19,13 @@
 .t-button[data-v-16c1f8]:focus {
   outline: none;
 }
-.t-button > .icon[data-v-16c1f8] {
-  margin-right: 0.1em;
-}
 .t-button.icon-right > .icon[data-v-16c1f8] {
   order: 2;
   margin-right: 0;
   margin-left: 0.1em;
+}
+.t-button.icon-left > .icon[data-v-16c1f8] {
+  order: -1;
+  margin-right: 0.1em;
+  margin-left: 0;
 }

@@ -3,13 +3,22 @@
     <svg v-if="icon" class="icon">
       <use :xlink:href=`#i-${icon}`></use>
     </svg>
-      <slot></slot>
+    <slot></slot>
   </button>
 </template>
 
 <script>
 export default {
-  props: ['icon', 'iconPosition']
+  props: {
+    icon: {},
+    iconPosition: {
+      type: String,
+      default: 'left',
+      validator(value) {
+        return !(value !== 'left' && value !== 'right');
+      }
+    }
+  }
 }
 </script>
 
@@ -38,15 +47,20 @@ export default {
     outline: none;
   }
 
-  > .icon{
-    margin-right: .1em;
-  }
 
   &.icon-right {
     > .icon {
       order: 2;
       margin-right: 0;
       margin-left: .1em;
+    }
+  }
+
+  &.icon-left {
+    > .icon {
+      order: -1;
+      margin-right: .1em;
+      margin-left: 0;
     }
   }
 }
