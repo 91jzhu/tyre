@@ -12592,12 +12592,15 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "button",
-    {
-      staticClass: "t-button",
-      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj)
-    },
+    { staticClass: "t-button" },
     [
-      _vm.icon ? _c("t-icon", { attrs: { name: _vm.icon } }) : _vm._e(),
+      _vm.icon
+        ? _c("t-icon", {
+            class:
+              ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
+            attrs: { name: _vm.icon }
+          })
+        : _vm._e(),
       _vm._v(" "),
       _vm._t("default")
     ],

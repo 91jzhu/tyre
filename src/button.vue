@@ -1,6 +1,6 @@
 <template>
-  <button class="t-button" :class="{[`icon-${iconPosition}`]:true}">
-    <t-icon v-if="icon" :name="icon"></t-icon>
+  <button class="t-button">
+    <t-icon v-if="icon" :name="icon" :class="{[`icon-${iconPosition}`]:true}"></t-icon>
     <slot></slot>
   </button>
 </template>
@@ -47,20 +47,16 @@ export default {
     outline: none;
   }
 
-  &.icon-right {
-    > .icon {
+  > .icon-right {
       order: 2;
       margin-right: 0;
       margin-left: .1em;
-    }
   }
 
-  &.icon-left {
-    > .icon {
+  > .icon-left {
       order: -1;
       margin-right: .1em;
       margin-left: 0;
-    }
   }
 }
 </style>
