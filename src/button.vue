@@ -1,14 +1,14 @@
 <template>
   <button class="t-button" :class="{[`icon-${iconPosition}`]:true}">
-    <svg v-if="icon" class="icon">
-      <use :xlink:href=`#i-${icon}`></use>
-    </svg>
+    <t-icon v-if="icon" :name="icon"></t-icon>
     <slot></slot>
   </button>
 </template>
 
 <script>
+import Icon from "./icon";
 export default {
+  components: {Icon},
   props: {
     icon: {},
     iconPosition: {
@@ -46,7 +46,6 @@ export default {
   &:focus {
     outline: none;
   }
-
 
   &.icon-right {
     > .icon {
