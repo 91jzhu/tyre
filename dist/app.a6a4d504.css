@@ -34,13 +34,19 @@
 .t-button[data-v-16c1f8]:focus {
   outline: none;
 }
-.t-button > .icon-right[data-v-16c1f8] {
+.t-button.icon-left > .content[data-v-16c1f8] {
   order: 2;
-  margin-right: 0;
-  margin-left: 0.1em;
 }
-.t-button > .icon-left[data-v-16c1f8] {
+.t-button.icon-left > .t-icon[data-v-16c1f8] {
   order: -1;
   margin-right: 0.1em;
   margin-left: 0;
+}
+.t-button.icon-right > .content[data-v-16c1f8] {
+  order: 1;
+}
+.t-button.icon-right > .t-icon[data-v-16c1f8] {
+  order: 2;
+  margin-right: 0;
+  margin-left: 0.1em;
 }

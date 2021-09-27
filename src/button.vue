@@ -1,17 +1,28 @@
 <template>
-  <button class="t-button">
-    <t-icon v-if="icon" :name="icon" :class="{[`icon-${iconPosition}`]:true}"></t-icon>
-    <t-icon name="loading" class="loading"></t-icon>
-    <slot></slot>
+  <button class="t-button"
+          :class="{[`icon-${iconPosition}`]:true}"
+          @click="$emit('click')">
+    <t-icon v-if="icon && !loading"
+            :name="icon"
+            class="icon"></t-icon>
+    <t-icon v-if="loading"
+            name="loading"
+            class="loading icon"></t-icon>
+    <slot class="content"></slot>
   </button>
 </template>
 
 <script>
 import Icon from "./icon";
+
 export default {
   components: {Icon},
   props: {
     icon: {},
+    loading: {
+      type: Boolean,
+      default: false
+    },
     iconPosition: {
       type: String,
       default: 'left',
@@ -25,12 +36,17 @@ export default {
 
 <style lang="scss" scoped>
 @keyframes spin {
-  0%{}
-  100%{transform: rotate(360deg)}
+  0% {
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-.loading{
+
+.loading {
   animation: spin 1s infinite linear;
 }
+
 .t-button {
   vertical-align: middle;
   display: inline-flex;
@@ -55,16 +71,26 @@ export default {
     outline: none;
   }
 
-  > .icon-right {
-      order: 2;
-      margin-right: 0;
-      margin-left: .1em;
-  }
-
-  > .icon-left {
+  &.icon-left {
+    > .content{
+      order:2
+    }
+    > .t-icon {
       order: -1;
       margin-right: .1em;
       margin-left: 0;
+    }
+  }
+
+  &.icon-right {
+    > .content{
+      order:1
+    }
+    > .t-icon {
+      order: 2;
+      margin-right: 0;
+      margin-left: .1em;
+    }
   }
 }
 </style>
