@@ -77,7 +77,7 @@ export default {
       order: 2
     }
 
-    > .t-icon {
+    > .icon {
       order: -1;
       margin-right: .1em;
       margin-left: 0;
@@ -89,7 +89,7 @@ export default {
       order: 1
     }
 
-    > .t-icon {
+    > .icon {
       order: 2;
       margin-right: 0;
       margin-left: .1em;

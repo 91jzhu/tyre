@@ -38,7 +38,7 @@
 .t-button.icon-left > .content[data-v-16c1f8] {
   order: 2;
 }
-.t-button.icon-left > .t-icon[data-v-16c1f8] {
+.t-button.icon-left > .icon[data-v-16c1f8] {
   order: -1;
   margin-right: 0.1em;
   margin-left: 0;
@@ -46,7 +46,7 @@
 .t-button.icon-right > .content[data-v-16c1f8] {
   order: 1;
 }
-.t-button.icon-right > .t-icon[data-v-16c1f8] {
+.t-button.icon-right > .icon[data-v-16c1f8] {
   order: 2;
   margin-right: 0;
   margin-left: 0.1em;
