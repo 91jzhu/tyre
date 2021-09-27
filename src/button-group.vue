@@ -4,7 +4,18 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  mounted(){
+    for(let node of this.$el.children){
+      let name=node.nodeName.toLowerCase()
+      if(name!=='button'){
+        console.warn(`t-button-group 的子元素应该只有 t-button, 但你写的是${name}`)
+      }
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .t-button-group{

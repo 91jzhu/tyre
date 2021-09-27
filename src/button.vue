@@ -50,6 +50,7 @@ export default {
 .t-button {
   vertical-align: middle;
   display: inline-flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   font-size: var(--font-size);
