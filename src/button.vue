@@ -72,9 +72,10 @@ export default {
   }
 
   &.icon-left {
-    > .content{
-      order:2
+    > .content {
+      order: 2
     }
+
     > .t-icon {
       order: -1;
       margin-right: .1em;
@@ -83,9 +84,10 @@ export default {
   }
 
   &.icon-right {
-    > .content{
-      order:1
+    > .content {
+      order: 1
     }
+
     > .t-icon {
       order: 2;
       margin-right: 0;
