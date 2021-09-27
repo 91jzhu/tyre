@@ -1,6 +1,7 @@
 <template>
   <button class="t-button">
     <t-icon v-if="icon" :name="icon" :class="{[`icon-${iconPosition}`]:true}"></t-icon>
+    <t-icon name="loading" class="loading"></t-icon>
     <slot></slot>
   </button>
 </template>
@@ -23,6 +24,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@keyframes spin {
+  0%{}
+  100%{transform: rotate(360deg)}
+}
+.loading{
+  animation: spin 1s infinite linear;
+}
 .t-button {
   vertical-align: middle;
   display: inline-flex;
