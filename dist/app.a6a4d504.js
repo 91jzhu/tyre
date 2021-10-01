@@ -12134,7 +12134,53 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./vue.common.dev.js');
 }
-},{"./vue.common.dev.js":"node_modules/vue/dist/vue.common.dev.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./vue.common.dev.js":"node_modules/vue/dist/vue.common.dev.js"}],"src/svg.js":[function(require,module,exports) {
+!function (t) {
+  var a,
+      _e,
+      l,
+      c,
+      o,
+      i = '<svg><symbol id="i-error" viewBox="0 0 1024 1024"><path d="M512 62C263.44999971 62 62 263.44999971 62 512s201.44999971 450 450 450 450-201.44999971 450-450S760.55000029 62 512 62z m0 700.01250029A50.02499971 50.02499971 0 1 1 511.96249971 662.00000029 50.02499971 50.02499971 0 0 1 512 762.01250029z m47.62500029-200.21250058h0.1125a53.17499971 53.17499971 0 0 1-47.28750029 49.12500058c1.8 0.225 3.41250029 1.0125 5.24999971 1.0125h-10.38749942c1.8 0 3.375-0.86249971 5.13749971-0.97500058a51.93749971 51.93749971 0 0 1-46.72500029-49.12499971l-11.475-249.75a47.73750029 47.73750029 0 0 1 48.00000058-50.13749971h23.09999942a46.575 46.575 0 0 1 47.62500029 50.09999942l-13.31250029 249.75z"  ></path></symbol><symbol id="i-normal" viewBox="0 0 1024 1024"><path d="M512 68.92307656C266.46153875 68.92307656 68.92307656 266.46153875 68.92307656 512s197.53846125 443.07692344 443.07692344 443.07692344 443.07692344-197.53846125 443.07692344-443.07692344S757.53846125 68.92307656 512 68.92307656z m0 223.38461531c31.38461531 0 55.38461531 24 55.38461531 55.38461626s-24 55.38461531-55.38461531 55.38461531-55.38461531-24-55.38461531-55.38461531 24-55.38461531 55.38461531-55.38461625z m92.30769188 387.69230813c0 9.23076937-7.38461531 16.61538469-18.46153782 16.61538469h-147.69230812c-9.23076937 0-18.46153875-5.53846125-18.46153781-16.61538469v-36.92307656c0-9.23076937 7.38461531-20.30769187 18.46153781-20.30769282 9.23076937 0 18.46153875-5.53846125 18.46153875-16.61538468v-73.84615407c0-9.23076937-7.38461531-20.30769187-18.46153875-20.30769187-9.23076937 0-18.46153875-5.53846125-18.46153781-16.61538469v-36.92307656c0-9.23076937 7.38461531-20.30769187 18.46153781-20.30769281h110.76923062c9.23076937 0 18.46153875 9.23076937 18.46153875 20.30769281v147.69230719c0 9.23076937 7.38461531 16.61538469 18.46153875 16.61538468 9.23076937 0 18.46153875 9.23076937 18.46153781 20.30769282v36.92307656z"  ></path></symbol><symbol id="i-loading" viewBox="0 0 1024 1024"><path d="M476 72a8 8 0 0 1 8-8h56a8 8 0 0 1 8 8v208a8 8 0 0 1-8 8h-56a8 8 0 0 1-8-8V72z"  ></path><path d="M260 148.928A8 8 0 0 1 262.928 138l48.498-28a8 8 0 0 1 10.928 2.928l104 180.133a8.001 8.001 0 0 1-2.928 10.929l-48.498 28A8 8 0 0 1 364 329.061L260 148.928z"  ></path><path d="M112.928 322.354A8 8 0 0 1 110 311.426l28-48.498A8 8 0 0 1 148.928 260l180.133 104a8 8 0 0 1 2.929 10.928l-28 48.498a8.001 8.001 0 0 1-10.929 2.928l-180.133-104z"  ></path><path d="M72 548a8 8 0 0 1-8-8v-56a8 8 0 0 1 8-8h208a8 8 0 0 1 8 8v56a8 8 0 0 1-8 8H72z"  ></path><path d="M764 148.928A8 8 0 0 0 761.072 138l-48.498-28a8 8 0 0 0-10.928 2.928l-104 180.133a8.001 8.001 0 0 0 2.928 10.929l48.498 28A8 8 0 0 0 660 329.061l104-180.133z"  ></path><path d="M911.072 322.354A8 8 0 0 0 914 311.426l-28-48.498A8 8 0 0 0 875.072 260L694.939 364a8 8 0 0 0-2.929 10.928l28 48.498a8.001 8.001 0 0 0 10.929 2.928l180.133-104z"  ></path><path d="M952 548a8 8 0 0 0 8-8v-56a8 8 0 0 0-8-8H744a8 8 0 0 0-8 8v56a8 8 0 0 0 8 8h208z"  ></path><path d="M476 952a8 8 0 0 0 8 8h56a8 8 0 0 0 8-8V744a8 8 0 0 0-8-8h-56a8 8 0 0 0-8 8v208z"  ></path><path d="M260 875.072A8 8 0 0 0 262.928 886l48.498 28a8 8 0 0 0 10.928-2.928l104-180.133a8.001 8.001 0 0 0-2.928-10.929l-48.498-28A8 8 0 0 0 364 694.939L260 875.072z"  ></path><path d="M112.928 701.646A8 8 0 0 0 110 712.574l28 48.498A8 8 0 0 0 148.928 764l180.133-104a8 8 0 0 0 2.929-10.928l-28-48.498a8.001 8.001 0 0 0-10.929-2.928l-180.133 104z"  ></path><path d="M764 875.072A8 8 0 0 1 761.072 886l-48.498 28a8 8 0 0 1-10.928-2.928l-104-180.133a8.001 8.001 0 0 1 2.928-10.929l48.498-28A8 8 0 0 1 660 694.939l104 180.133z"  ></path><path d="M911.072 701.646A8 8 0 0 1 914 712.574l-28 48.498A8 8 0 0 1 875.072 764L694.939 660a8 8 0 0 1-2.929-10.928l28-48.498a8.001 8.001 0 0 1 10.929-2.928l180.133 104z"  ></path></symbol><symbol id="i-down" viewBox="0 0 1807 1024"><path d="M1337.61938782 224.37816019a59.08671535 59.08671535 0 0 1 84.71252347 0c23.36153577 23.86470754 23.36153577 62.53703508 0 86.40174202l-479.19901414 488.79521446a59.08671535 59.08671535 0 0 1-84.74846448 0L379.18541853 310.77990221a61.96198189 61.96198189 0 0 1 0-86.40174202 59.08671535 59.08671535 0 0 1 84.71252346 1e-8L900.75866521 669.97250366 1337.61938782 224.37816019z"  ></path></symbol><symbol id="i-left" viewBox="0 0 1024 1024"><path d="M747.245 81.064c-28.497-29.315-74.739-29.315-103.307 0l-367.236 378.011c-28.483 29.367-28.483 76.982 0 106.291l367.236 377.997c28.562 29.367 74.806 29.367 103.307 0 28.546-29.325 28.546-76.929 0-106.304l-315.6-324.841 315.599-324.803c28.545-29.367 28.544-76.973 0-106.356l0 0z"  ></path></symbol><symbol id="i-right" viewBox="0 0 1024 1024"><path d="M276.755 942.936c28.497 29.315 74.739 29.315 103.307 0l367.236-378.01100001c28.483-29.367 28.483-76.982-1e-8-106.29099999l-367.23599999-377.997c-28.562-29.367-74.806-29.367-103.307 0-28.546 29.325-28.54600001 76.929 0 106.30399999l315.6 324.84100001-315.599 324.803c-28.545 29.367-28.544 76.973 0 106.356l0 0z"  ></path></symbol><symbol id="i-setting" viewBox="0 0 1024 1024"><path d="M913.94086 431.828053c-4.878101-25.783223-20.693298-42.455951-40.947598-42.455951l-3.511987 0c-54.731532 0-99.248422-44.515866-99.248422-99.262748 0-17.294898 8.299013-37.015032 8.619308-37.798884 10.097986-22.722514 2.349511-50.567699-18.078751-64.859193l-102.701057-57.183374-1.509377-0.738827c-20.545942-8.909927-48.667419-3.207042-63.987337 12.753465-11.086499 11.434423-49.306986 44.037982-78.471213 44.037982-29.543873 0-67.849294-33.257451-78.992075-44.908816-15.293311-16.077164-43.12417-22.112624-63.902402-13.218046l-106.35733 58.272171-1.596358 1.016143c-20.430308 14.234189-28.207435 42.078351-18.165732 64.713884 0.346901 0.827855 8.676613 20.387329 8.676613 37.914518 0 54.746882-44.51689 99.262748-99.247398 99.262748l-4.149507 0c-19.617803 0-35.434024 16.671705-40.309054 42.455951-0.363274 1.814322-8.590656 45.446052-8.590656 80.429821 0 34.938744 8.227382 78.555124 8.590656 80.355119 4.875031 25.799596 20.691251 42.48665 40.946574 42.48665l3.511987 0c54.730509 0 99.247398 44.51689 99.247398 99.247398 0 17.411555-8.328689 37.058011-8.647961 37.812187-10.069333 22.766516-2.349511 50.567699 18.021445 64.787562l100.756775 56.531528 1.538029 0.696872c20.836561 9.17087 49.01432 3.191692 64.250326-13.464663 14.07353-15.207353 52.207036-46.782489 80.20981-46.782489 30.354332 0 69.445652 35.347043 80.706113 47.76691 10.387581 11.376095 26.349111 18.22713 42.687218 18.22713 7.631818 0 14.857383-1.511423 21.474081-4.354168l104.4724-57.574277 1.538029-0.989537c20.428262-14.276145 28.206412-42.077328 18.138102-64.727187-0.348947-0.842181-8.677637-20.402679-8.677637-37.928844 0-54.730509 44.51689-99.247398 99.248422-99.247398l4.093225 0c19.644409 0 35.488259-16.687054 40.365336-42.48665 0.347924-1.799996 8.588609-45.416376 8.588609-80.355119C922.529469 477.274104 914.288784 433.642374 913.94086 431.828053M862.982258 512.257873c0 22.605857-4.498454 51.655474-6.559393 63.785745-82.09781 6.732331-145.738245 75.335802-145.738245 158.303422 0 23.419386 7.430226 45.851281 11.377118 56.169277l-89.12076 49.216935c-4.38282-4.584412-17.325597-17.644869-34.939767-30.762631-30.93557-22.925129-60.595077-34.635845-88.106664-34.635845-27.278273 0-56.703443 11.420097-87.493703 34.05563-17.528212 12.768815-30.296003 25.479301-34.765805 30.18037l-85.724407-47.997154c4.179183-10.839883 11.405771-32.982182 11.405771-56.226582 0-82.96762-63.640436-151.571091-145.70857-158.303422-2.089591-12.130272-6.588045-41.178865-6.588045-63.785745 0-22.650883 4.498454-51.713802 6.588045-63.844074 82.068134-6.718005 145.70857-75.335802 145.70857-158.303422 0-23.288402-7.429203-45.792952-11.376095-56.095599l91.325985-50.190099c3.975545 3.976568 17.005302 16.730033 34.82311 29.411867 30.355355 21.663392 59.260685 32.633235 86.016049 32.633235 26.494421 0 55.19509-10.766205 85.346807-32.009018 17.963117-12.623505 30.964222-25.203008 34.736129-28.757974l87.900979 48.825009c-3.975545 10.244318-11.405771 32.676214-11.405771 56.18258 0 82.96762 63.640436 151.585417 145.738245 158.303422C858.483804 460.5717 862.982258 489.7523 862.982258 512.257873"  ></path><path d="M510.215866 365.633445c-80.530105 0-146.056494 65.527412-146.056494 146.057517 0 80.543408 65.527412 146.043191 146.056494 146.043191 80.530105 0 146.057517-65.499783 146.057517-146.043191C656.273383 431.160857 590.74597 365.633445 510.215866 365.633445M596.725148 511.690962c0 47.693232-38.799678 86.491887-86.509283 86.491887-47.708582 0-86.479607-38.798655-86.479607-86.491887 0-47.665603 38.771025-86.479607 86.479607-86.479607C557.925471 425.212378 596.725148 464.025359 596.725148 511.690962"  ></path></symbol><symbol id="i-download" viewBox="0 0 1024 1024"><path d="M918.3 468.6c-18.8 0-34 15.2-34 34v309.6c0 6.6-14.4 18.7-38 18.7H190.2c-23.5 0-38-12.1-38-18.7V486c0-18.8-15.2-34-34-34s-34 15.2-34 34v326.3c0 24.8 12.8 48.4 35 64.7 19.4 14.2 44.6 22 71 22h656.1c26.4 0 51.6-7.8 71-22 22.2-16.3 35-39.9 35-64.7V502.6c0-18.7-15.3-34-34-34z"  ></path><path d="M450.4 679.4c17.8 18 41.5 28 66.8 28.1h0.5c25.1 0 48.8-9.7 66.6-27.4l154.4-152.8c13.3-13.2 13.5-34.7 0.2-48.1-13.2-13.3-34.7-13.5-48.1-0.2L551.3 617.1c0.6-2.6 1-5.3 1-8.1V149.1c0-18.8-15.2-34-34-34s-34 15.2-34 34V609c0 3.2 0.5 6.3 1.3 9.3L345.9 477.1c-13.2-13.3-34.7-13.5-48.1-0.2-13.3 13.2-13.5 34.7-0.2 48.1l152.8 154.4z"  ></path></symbol><symbol id="i-good" viewBox="0 0 1024 1024"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z"  ></path></symbol></svg>',
+      d = (d = document.getElementsByTagName("script"))[d.length - 1].getAttribute("data-injectcss"),
+      n = function n(t, a) {
+    a.parentNode.insertBefore(t, a);
+  };
+
+  if (d && !t.__iconfont__svg__cssinject__) {
+    t.__iconfont__svg__cssinject__ = !0;
+
+    try {
+      document.write("<style>.svgfont {display: inline-block;width: 1em;height: 1em;fill: currentColor;vertical-align: -0.1em;font-size:16px;}</style>");
+    } catch (t) {
+      console && console.log(t);
+    }
+  }
+
+  function h() {
+    o || (o = !0, l());
+  }
+
+  function s() {
+    try {
+      c.documentElement.doScroll("left");
+    } catch (t) {
+      return void setTimeout(s, 50);
+    }
+
+    h();
+  }
+
+  a = function a() {
+    var t, a;
+    (a = document.createElement("div")).innerHTML = i, i = null, (t = a.getElementsByTagName("svg")[0]) && (t.setAttribute("aria-hidden", "true"), t.style.position = "absolute", t.style.width = 0, t.style.height = 0, t.style.overflow = "hidden", a = t, (t = document.body).firstChild ? n(a, t.firstChild) : t.appendChild(a));
+  }, document.addEventListener ? ~["complete", "loaded", "interactive"].indexOf(document.readyState) ? setTimeout(a, 0) : (_e = function e() {
+    document.removeEventListener("DOMContentLoaded", _e, !1), a();
+  }, document.addEventListener("DOMContentLoaded", _e, !1)) : document.attachEvent && (l = a, c = t.document, o = !1, s(), c.onreadystatechange = function () {
+    "complete" == c.readyState && (c.onreadystatechange = null, h());
+  });
+}(window);
+},{}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -12483,6 +12529,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+require("./svg.js");
+
 //
 //
 //
@@ -12490,6 +12539,7 @@ exports.default = void 0;
 //
 //
 var _default = {
+  name: "t-icon",
   props: ['name']
 };
 exports.default = _default;
@@ -12542,7 +12592,7 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/button.vue":[function(require,module,exports) {
+},{"./svg.js":"src/svg.js","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/button.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12569,6 +12619,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 var _default = {
+  name: "t-button",
   components: {
     Icon: _icon.default
   },
@@ -12683,6 +12734,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 var _default = {
+  name: "t-button-group",
   mounted: function mounted() {
     var _iterator = _createForOfIteratorHelper(this.$el.children),
         _step;
@@ -12751,7 +12803,127 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/input.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _icon = _interopRequireDefault(require("./icon.vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "t-input",
+  components: {
+    Icon: _icon.default
+  },
+  props: {
+    content: {
+      type: String
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: String,
+      default: false
+    },
+    error: {
+      type: String
+    }
+  }
+};
+exports.default = _default;
+        var $8aa14f = exports.default || module.exports;
+      
+      if (typeof $8aa14f === 'function') {
+        $8aa14f = $8aa14f.options;
+      }
+    
+        /* template */
+        Object.assign($8aa14f, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "wrapper", class: { error: _vm.error } },
+    [
+      _c("input", {
+        attrs: { type: "text", readonly: _vm.readonly, disabled: _vm.disabled },
+        domProps: { value: _vm.content }
+      }),
+      _vm._v(" "),
+      _vm.error
+        ? [
+            _c("t-icon", {
+              staticClass: "icon-error",
+              attrs: { name: "error" }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "errorMessage" }, [
+              _vm._v(_vm._s(_vm.error))
+            ])
+          ]
+        : _vm._e()
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-8aa14f",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$8aa14f', $8aa14f);
+          } else {
+            api.reload('$8aa14f', $8aa14f);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"./icon.vue":"src/icon.vue","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -12762,6 +12934,8 @@ var _icon = _interopRequireDefault(require("./icon.vue"));
 
 var _buttonGroup = _interopRequireDefault(require("./button-group"));
 
+var _input = _interopRequireDefault(require("./input"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue.default.component('t-button', _button.default);
@@ -12770,6 +12944,8 @@ _vue.default.component('t-icon', _icon.default);
 
 _vue.default.component('t-button-group', _buttonGroup.default);
 
+_vue.default.component('t-input', _input.default);
+
 new _vue.default({
   el: "#app",
   data: {
@@ -12777,91 +12953,8 @@ new _vue.default({
     loading2: false,
     loading3: false
   }
-}); // 第一次测试
-// import chai from 'chai'
-// import spies from 'chai-spies'
-// chai.use(spies)
-// const expect=chai.expect
-// {
-//     const Constructor=Vue.extend(Button)
-//     const vm=new Constructor({
-//         propsData:{
-//             icon:"good"
-//         }
-//     })
-//     vm.$mount()
-//     let useElement=vm.$el.querySelector('use')
-//     expect(useElement.getAttribute("xlink:href")).to.eq('#i-good')
-//     vm.$el.remove()
-//     vm.$destroy()
-// }
-// {
-//     const Constructor=Vue.extend(Button)
-//     const vm=new Constructor({
-//         propsData:{
-//             icon:"setting",
-//             loading:true
-//         }
-//     }).$mount()
-//     let useElement=vm.$el.querySelector('use')
-//     expect(useElement.getAttribute("xlink:href")).to.eq('#i-loading')
-//     vm.$el.remove()
-//     vm.$destroy()
-// }
-// {
-//     const div=document.createElement('div')
-//     document.body.appendChild(div)
-//     const Constructor=Vue.extend(Button)
-//     const vm=new Constructor({
-//         propsData:{
-//             icon:"setting"
-//         }
-//     })
-//     vm.$mount(div)
-//     let svg=vm.$el.querySelector('svg')
-//     let order=window.getComputedStyle(svg).order
-//     expect(order).to.eq("-1")
-//     vm.$el.remove()
-//     vm.$destroy()
-// }
-// {
-//     const div=document.createElement('div')
-//     document.body.appendChild(div)
-//     const Constructor=Vue.extend(Button)
-//     const vm=new Constructor({
-//         propsData:{
-//             icon:"setting",
-//             iconPosition:"right"
-//         }
-//     })
-//     vm.$mount(div)
-//     let svg=vm.$el.querySelector('svg')
-//     let order=window.getComputedStyle(svg).order
-//     expect(order).to.eq("2")
-//     vm.$el.remove()
-//     vm.$destroy()
-// }
-// {
-//     // mock
-//     const div=document.createElement('div')
-//     document.body.appendChild(div)
-//     const Constructor=Vue.extend(Button)
-//     const vm=new Constructor({
-//         propsData:{
-//             icon:"setting",
-//             iconPosition:"right"
-//         }
-//     })
-//     vm.$mount(div)
-//     let spy=chai.spy(function(){})
-//     vm.$on('click',spy)
-//     let button=vm.$el
-//     button.click()
-//     expect(spy).to.have.been.called()
-//     vm.$el.remove()
-//     vm.$destroy()
-// }
-},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon.vue":"src/icon.vue","./button-group":"src/button-group.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+});
+},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon.vue":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -12889,7 +12982,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49401" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58709" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

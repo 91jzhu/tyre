@@ -5,7 +5,9 @@
 </template>
 
 <script>
+import "./svg.js"
 export default  {
+  name:"t-icon",
   props:['name']
 }
 </script>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tyre</title>
-<link rel="stylesheet" href="/app.a6a4d504.css"><link rel="stylesheet" href="/button.test.c4c14d8f.css"></head>
+<link rel="stylesheet" href="/app.a6a4d504.css"></head>
 <style>* {
         margin: 0;
         padding: 0;
@@ -29,28 +29,41 @@
 
     body {
         font-size: var(--font-size)
+    }
+    .box{
+        margin:20px;
     }</style>
 <body>
 <div id="app">
-    <t-button :loading="loading1" @click="loading1=!loading1">
-        按钮
-    </t-button>
-    <t-button icon="setting" :loading="loading2" @click="loading2=!loading2">
-        按钮
-    </t-button>
-    <t-button icon="setting" icon-position="right" :loading="loading3" @click="loading3=!loading3">
-        按钮
-    </t-button>
+    <div class="box">
+        <t-button :loading="loading1" @click="loading1=!loading1">
+            按钮
+        </t-button>
+        <t-button icon="setting" :loading="loading2" @click="loading2=!loading2">
+            按钮
+        </t-button>
+        <t-button icon="setting" icon-position="right" :loading="loading3" @click="loading3=!loading3">
+            按钮
+        </t-button>
+    </div>
     <t-button-group>
         <t-button icon="left">上一页</t-button>
         <t-button>更多</t-button>
         <t-button icon="right" icon-position="right">下一页</t-button>
     </t-button-group>
+    <div style="margin: 20px"></div>
+    <div class="box">
+        <t-input content="重伤"></t-input>
+        <t-input content="重伤" :disabled="true"></t-input>
+        <t-input content="重伤" :readonly="true"></t-input>
+    </div>
+    <div class="box">
+        <t-input error="姓名不能少于两个字"></t-input>
+    </div>
 </div>
 
 <script src="/app.a6a4d504.js"></script>
-<script src="//at.alicdn.com/t/font_2836712_r0gcckoxtw.js"></script>
-<script src="/button.test.c4c14d8f.js"></script>
+<script src="//at.alicdn.com/t/font_2836712_y0tr2bc87wc.js"></script>
 
 </body>
 </html>

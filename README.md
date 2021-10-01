@@ -30,10 +30,28 @@
     IE 15 及以上浏览器都支持此样式
 
 2. 安装tyre
-    ```
-   npm i --save tyre
+   ```
+   npm i --save tyrei
+   ```
+   
+3. 引入tyre
+   ```
+   import {Button,ButtonGroup,Icon} from 'tyrei'
+   import 'tyrei/dist/index.css'
+   
+   export default {
+       name: 'App',
+       components: {
+           't-button':Button,
+           "t-icon":Icon
+        }
+   }
    ```
 
+4. 引入 svg symbols
+   ```
+   <script src="//at.alicdn.com/t/font_2836712_r0gcckoxtw.js"></script>
+   ```
 ## 文档
 
 ## 提问

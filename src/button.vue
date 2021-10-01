@@ -16,6 +16,7 @@
 import Icon from "./icon";
 
 export default {
+  name:"t-button",
   components: {Icon},
   props: {
     icon: {},
