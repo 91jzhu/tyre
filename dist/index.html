@@ -53,12 +53,13 @@
     </t-button-group>
     <div style="margin: 20px"></div>
     <div class="box">
-        <t-input content="重伤"></t-input>
-        <t-input content="重伤" :disabled="true"></t-input>
-        <t-input content="重伤" :readonly="true"></t-input>
+        <t-input content="第一"></t-input>
+        <t-input content="第二" :disabled="true"></t-input>
+        <t-input content="第三" :readonly="true"></t-input>
     </div>
     <div class="box">
-        <t-input error="姓名不能少于两个字"></t-input>
+        {{message}}
+        <t-input content="第四" v-model="message" error="姓名不能少于两个字"></t-input>
     </div>
 </div>
 

@@ -12830,6 +12830,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
 var _default = {
   name: "t-input",
   components: {
@@ -12844,7 +12848,7 @@ var _default = {
       default: false
     },
     readonly: {
-      type: String,
+      type: Boolean,
       default: false
     },
     error: {
@@ -12871,7 +12875,21 @@ exports.default = _default;
     [
       _c("input", {
         attrs: { type: "text", readonly: _vm.readonly, disabled: _vm.disabled },
-        domProps: { value: _vm.content }
+        domProps: { value: _vm.content },
+        on: {
+          change: function($event) {
+            return _vm.$emit("change", $event.target.value)
+          },
+          input: function($event) {
+            return _vm.$emit("input", $event.target.value)
+          },
+          focus: function($event) {
+            return _vm.$emit("focus", $event.target.value)
+          },
+          blur: function($event) {
+            return _vm.$emit("blur", $event.target.value)
+          }
+        }
       }),
       _vm._v(" "),
       _vm.error
@@ -12949,9 +12967,15 @@ _vue.default.component('t-input', _input.default);
 new _vue.default({
   el: "#app",
   data: {
+    message: "hi",
     loading1: false,
     loading2: false,
     loading3: false
+  },
+  methods: {
+    inputChange: function inputChange(e) {
+      console.log(e.target.value);
+    }
   }
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon.vue":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -12982,7 +13006,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58709" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49978" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
