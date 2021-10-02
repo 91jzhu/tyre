@@ -30,11 +30,26 @@
     body {
         font-size: var(--font-size)
     }
-    .box{
-        margin:20px;
+
+    .box {
+        margin: 20px;
     }</style>
 <body>
 <div id="app">
+    <t-row>
+        <t-col>1</t-col>
+        <t-col>2</t-col>
+    </t-row>
+    <t-row>
+        <t-col>1</t-col>
+        <t-col>2</t-col>
+        <t-col>3</t-col>
+    </t-row>
+    <t-row>
+        <t-col span="2">1</t-col>
+        <t-col span="22">11</t-col>
+    </t-row>
+    <hr>
     <div class="box">
         <t-button :loading="loading1" @click="loading1=!loading1">
             按钮
@@ -58,7 +73,7 @@
         <t-input content="第三" :readonly="true"></t-input>
     </div>
     <div class="box">
-        {{message}}
+        {{ message }}
         <t-input content="第四" v-model="message" error="姓名不能少于两个字"></t-input>
     </div>
 </div>
