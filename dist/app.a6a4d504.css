@@ -111,11 +111,18 @@
 }
 .row[data-v-d52139] {
   display: flex;
-  margin: 0 -10px;
+}
+.row.align-left[data-v-d52139] {
+  justify-content: flex-start;
+}
+.row.align-center[data-v-d52139] {
+  justify-content: center;
+}
+.row.align-right[data-v-d52139] {
+  justify-content: flex-end;
 }
 .col[data-v-b04f10] {
   height: 100px;
-  width: 50%;
 }
 .col-1[data-v-b04f10] {
   width: 4.1666666667%;

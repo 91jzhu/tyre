@@ -12955,13 +12955,24 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   props: {
     gutter: {
       type: [Number, String]
+    },
+    align: {
+      type: String,
+      default: 'center',
+      validator: function validator(val) {
+        return ['left', 'right', 'center'].includes(val);
+      }
     }
   },
   computed: {
+    rowClass: function rowClass() {
+      return [this.align && "align-".concat(this.align)];
+    },
     rowStyle: function rowStyle() {
       return {
         marginLeft: -this.gutter / 2 + 'px',
@@ -12992,7 +13003,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "row", style: _vm.rowStyle },
+    { staticClass: "row", class: _vm.rowClass, style: _vm.rowStyle },
     [_vm._t("default")],
     2
   )
@@ -13197,7 +13208,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61741" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63680" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
