@@ -36,22 +36,27 @@
     .box {
         margin: 20px;
     }
+    .page{
+        border:1px solid red;
+    }
 </style>
 <body>
 <div id="app">
-    <t-row>
-        <t-col>1</t-col>
-        <t-col>2</t-col>
-    </t-row>
-    <t-row>
-        <t-col>1</t-col>
-        <t-col>2</t-col>
-        <t-col>3</t-col>
-    </t-row>
-    <t-row>
-        <t-col span="2">1</t-col>
-        <t-col span="22">11</t-col>
-    </t-row>
+    <div class="page">
+<!--        <t-row>-->
+<!--            <t-col>1</t-col>-->
+<!--            <t-col>2</t-col>-->
+<!--        </t-row>-->
+        <t-row gutter="20">
+            <t-col>1</t-col>
+            <t-col>2</t-col>
+            <t-col>3</t-col>
+        </t-row>
+        <t-row gutter="20">
+            <t-col>1</t-col>
+            <t-col>11</t-col>
+        </t-row>
+    </div>
     <hr/>
     <div class="box">
         <t-button :loading="loading1"
