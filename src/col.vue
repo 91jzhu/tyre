@@ -37,10 +37,10 @@ export default {
       return [
         span && `col-${span}`,
         offset && `offset-${offset}`,
-        ...(ipad && [`col-phone-${ipad.span}`]),
-        ...(narrowPc && [`col-phone-${narrowPc.span}`]),
-        ...(pc && [`col-phone-${pc.span}`]),
-        ...(widePc && [`col-phone-${widePc.span}`])
+        ...(ipad ? [`col-ipad-${ipad.span}`] : []),
+        ...(narrowPc ? [`col-narrowPc-${narrowPc.span}`] : []),
+        ...(pc ? [`col-pc-${pc.span}`] : []),
+        ...(widePc ? [`col-widePc-${widePc.span}`] : [])
       ]
     },
     colStyle() {
@@ -57,79 +57,77 @@ export default {
 .col {
   $class: col-;
   @for $n from 1 through 24 {
-    .#{$class}#{$n} {
+    &.#{$class}#{$n} {
       width: ($n/24)*100%
     }
   }
-
   $class: offset-;
   @for $n from 1 through 24 {
-    .#{$class}#{$n} {
+    &.#{$class}#{$n} {
       margin-left: ($n/24)*100%
     }
   }
-}
+  @media (min-width: 577px) {
+    $class: col-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class}#{$n} {
+        width: ($n/24)*100%
+      }
+    }
 
-@media (min-width: 577px) and (max-width: 768px) {
-  $class: col-ipad-;
-  @for $n from 1 through 24 {
-    .#{$class}#{$n} {
-      width: ($n/24)*100%
+    $class: offset-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class}#{$n} {
+        margin-left: ($n/24)*100%
+      }
     }
   }
 
-  $class: offset-ipad-;
-  @for $n from 1 through 24 {
-    .#{$class}#{$n} {
-      margin-left: ($n/24)*100%
+  @media (min-width: 768px) {
+    $class: col-narrow-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class}#{$n} {
+        width: ($n/24)*100%
+      }
     }
-  }
-}
 
-@media (min-width: 768px) and (max-width: 992px) {
-  $class: col-narrow-pc-;
-  @for $n from 1 through 24 {
-    .#{$class}#{$n} {
-      width: ($n/24)*100%
-    }
-  }
-
-  $class: offset-narrow-pc-;
-  @for $n from 1 through 24 {
-    .#{$class}#{$n} {
-      margin-left: ($n/24)*100%
-    }
-  }
-}
-
-@media (min-width: 992px) and(max-width: 1200px) {
-  $class: col-pc-;
-  @for $n from 1 through 24 {
-    .#{$class}#{$n} {
-      width: ($n/24)*100%
+    $class: offset-narrow-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class}#{$n} {
+        margin-left: ($n/24)*100%
+      }
     }
   }
 
-  $class: offset-pc-;
-  @for $n from 1 through 24 {
-    .#{$class}#{$n} {
-      margin-left: ($n/24)*100%
+  @media (min-width: 992px) {
+    $class: col-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class}#{$n} {
+        width: ($n/24)*100%
+      }
+    }
+
+    $class: offset-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class}#{$n} {
+        margin-left: ($n/24)*100%
+      }
     }
   }
-}
 
-@media (min-width: 1200px) {
-  $class: col-wide-pc-;
-  @for $n from 1 through 24 {
-    .#{$class}#{$n} {
-      width: ($n/24)*100%
+  @media (min-width: 1200px) {
+    $class: col-wide-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class}#{$n} {
+        width: ($n/24)*100%
+      }
     }
-  }
 
-  $class: offset-wide-pc-;
-  @for $n from 1 through 24 {
-    .#{$class}#{$n} {
-      margin-left: ($n/24)*100%
+    $class: offset-wide-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class}#{$n} {
+        margin-left: ($n/24)*100%
+      }
     }
   }
 }

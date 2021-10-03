@@ -13117,7 +13117,7 @@ var _default = {
           narrowPc = this.narrowPc,
           pc = this.pc,
           widePc = this.widePc;
-      return [span && "col-".concat(span), offset && "offset-".concat(offset)].concat(_toConsumableArray(ipad && ["col-phone-".concat(ipad.span)]), _toConsumableArray(narrowPc && ["col-phone-".concat(narrowPc.span)]), _toConsumableArray(pc && ["col-phone-".concat(pc.span)]), _toConsumableArray(widePc && ["col-phone-".concat(widePc.span)]));
+      return [span && "col-".concat(span), offset && "offset-".concat(offset)].concat(_toConsumableArray(ipad ? ["col-ipad-".concat(ipad.span)] : []), _toConsumableArray(narrowPc ? ["col-narrowPc-".concat(narrowPc.span)] : []), _toConsumableArray(pc ? ["col-pc-".concat(pc.span)] : []), _toConsumableArray(widePc ? ["col-widePc-".concat(widePc.span)] : []));
     },
     colStyle: function colStyle() {
       return {
