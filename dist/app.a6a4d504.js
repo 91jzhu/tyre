@@ -12963,7 +12963,6 @@ var _default = {
     },
     align: {
       type: String,
-      default: 'center',
       validator: function validator(val) {
         return ['left', 'right', 'center'].includes(val);
       }
@@ -13048,6 +13047,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 //
 //
 //
@@ -13056,6 +13068,17 @@ exports.default = void 0;
 //
 //
 //
+var validator = function validator(val) {
+  var keys = Object.keys(val);
+  var valid = true;
+  keys.forEach(function (key) {
+    if (!['span', 'offset'].includes(key)) {
+      valid = false;
+    }
+  });
+  return valid;
+};
+
 var _default = {
   props: {
     span: {
@@ -13063,6 +13086,26 @@ var _default = {
     },
     offset: {
       type: [Number, String]
+    },
+    phone: {
+      type: Object,
+      validator: validator
+    },
+    ipad: {
+      type: Object,
+      validator: validator
+    },
+    narrowPc: {
+      type: Object,
+      validator: validator
+    },
+    pc: {
+      type: Object,
+      validator: validator
+    },
+    widePc: {
+      type: Object,
+      validator: validator
     }
   },
   data: function data() {
@@ -13072,7 +13115,14 @@ var _default = {
   },
   computed: {
     colClass: function colClass() {
-      return [this.span && "col-".concat(this.span), this.offset && "offset-".concat(this.offset)];
+      var span = this.span,
+          offset = this.offset,
+          phone = this.phone,
+          ipad = this.ipad,
+          narrowPc = this.narrowPc,
+          pc = this.pc,
+          widePc = this.widePc;
+      return [span && "col-".concat(span), offset && "offset-".concat(offset)].concat(_toConsumableArray(phone && ["col-phone-".concat(phone.span)]), _toConsumableArray(ipad && ["col-phone-".concat(ipad.span)]), _toConsumableArray(narrowPc && ["col-phone-".concat(narrowPc.span)]), _toConsumableArray(pc && ["col-phone-".concat(pc.span)]), _toConsumableArray(widePc && ["col-phone-".concat(widePc.span)]));
     },
     colStyle: function colStyle() {
       return {
@@ -13208,7 +13258,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63680" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50579" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
