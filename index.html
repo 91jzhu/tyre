@@ -50,14 +50,12 @@
 <body>
 <div id="app">
     <t-row>
-        <t-col span="24"
-               :narrow-pc={span:8}
-               :ipad={span:12}>
+        <t-col span="12"
+                :ipad="{span:8,offset:8}">
             <div class="demo"></div>
         </t-col>
-        <t-col span="24"
-               :narrow-pc={span:8}
-               :ipad={span:12}>
+        <t-col span="12"
+               :narrow-pc="{span:16,offset:3}">
             <div class="demo"></div>
         </t-col>
         <t-col span="24"
