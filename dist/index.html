@@ -24,101 +24,28 @@
     }
 
     #app {
-        margin: 20px;
+
     }
 
     body {
         font-size: var(--font-size)
     }
 
-    .box {
-        margin: 20px;
-    }
-
-    .page {
-        border: 1px solid red;
-    }
-
     .demo {
-        background: #ddd;
-        border: 1px solid #666;
-        height: 50px;
+        border: 1px solid lightcoral;
+        min-height: 60px;
     }</style>
+
 <body>
 <div id="app">
-    <t-row>
-        <t-col span="12" :ipad="{span:8,offset:8}">
-            <div class="demo"></div>
-        </t-col>
-        <t-col span="12" :narrow-pc="{span:16,offset:3}">
-            <div class="demo"></div>
-        </t-col>
-        <t-col span="24" :narrow-pc="{span:8}" :ipad="{span:12}">
-            <div class="demo"></div>
-        </t-col>
-        <t-col span="24" :narrow-pc="{span:8}" :ipad="{span:12}">
-            <div class="demo"></div>
-        </t-col>
-        <t-col span="24" :narrow-pc="{span:8}" :ipad="{span:12}">
-            <div class="demo"></div>
-        </t-col>
-        <t-col span="24" :narrow-pc="{span:8}" :ipad="{span:12}">
-            <div class="demo"></div>
-        </t-col>
-    </t-row>
-    <!--    <div class="page">-->
-    <!--        <t-row gutter="20">-->
-    <!--            <t-col span="8">1</t-col>-->
-    <!--            <t-col span="8">2</t-col>-->
-    <!--            <t-col span="8">3</t-col>-->
-    <!--        </t-row>-->
-    <!--        <t-row gutter="20">-->
-    <!--            <t-col :span="2"-->
-    <!--                   :ipad="{span:8}"-->
-    <!--                   :pc="{span:4}">1-->
-    <!--            </t-col>-->
-    <!--            <t-col :span="22"-->
-    <!--                   :ipad="{span:16}"-->
-    <!--                   :pc="{span:20}">11-->
-    <!--            </t-col>-->
-    <!--        </t-row>-->
-
-    <!--    </div>-->
-    <!--    <hr/>-->
-    <!--    <div class="box">-->
-    <!--        <t-button :loading="loading1"-->
-    <!--                  @click="loading1=!loading1">-->
-    <!--            按钮-->
-    <!--        </t-button>-->
-    <!--        <t-button icon="setting"-->
-    <!--                  :loading="loading2"-->
-    <!--                  @click="loading2=!loading2">-->
-    <!--            按钮-->
-    <!--        </t-button>-->
-    <!--        <t-button icon="setting"-->
-    <!--                  icon-position="right"-->
-    <!--                  :loading="loading3"-->
-    <!--                  @click="loading3=!loading3">-->
-    <!--            按钮-->
-    <!--        </t-button>-->
-    <!--    </div>-->
-    <!--    <t-button-group>-->
-    <!--        <t-button icon="left">上一页</t-button>-->
-    <!--        <t-button>更多</t-button>-->
-    <!--        <t-button icon="right" icon-position="right">下一页</t-button>-->
-    <!--    </t-button-group>-->
-    <!--    <div style="margin: 20px"></div>-->
-    <!--    <div class="box">-->
-    <!--        <t-input content="第一"></t-input>-->
-    <!--        <t-input content="第二" :disabled='true'></t-input>-->
-    <!--        <t-input content="第三" :readonly='true'></t-input>-->
-    <!--    </div>-->
-    <!--    <div class="box">-->
-    <!--        {{ message }}-->
-    <!--        <t-input content="第四"-->
-    <!--                 v-model="message"-->
-    <!--                 error="姓名不能少于两个字"></t-input>-->
-    <!--    </div>-->
+    <t-layout>
+        <t-sider class="demo">我是边栏</t-sider>
+        <t-layout>
+            <t-header class="demo">我是首部</t-header>
+            <t-content class="demo">我是内容</t-content>
+            <t-footer class="demo">我是底部</t-footer>
+        </t-layout>
+    </t-layout>
 </div>
 
 <script src="/app.a6a4d504.js"></script>
