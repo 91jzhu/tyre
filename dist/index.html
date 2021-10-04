@@ -29,30 +29,11 @@
 
     body {
         font-size: var(--font-size)
-    }
-    .sider{
-        background: #333;
-        width:200px;
-    }
-    .header{
-        background: #999;
-        height: 100px;
-    }
-    .footer{
-        background: #ccc;
-        height:50px;
     }</style>
 
 <body>
 <div id="app">
-    <t-layout>
-        <t-sider>我是边栏</t-sider>
-        <t-layout>
-            <t-header>我是首部</t-header>
-            <t-content>我是内容</t-content>
-            <t-footer>我是底部</t-footer>
-        </t-layout>
-    </t-layout>
+    <button @click="showToast">点我</button>
 </div>
 
 <script src="/app.a6a4d504.js"></script>

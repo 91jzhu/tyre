@@ -11,16 +11,6 @@
 
 <script>
 export default {
-  methods:{
-    enter: function (el, done) {
-      // ...
-      done()
-    },
-    leave: function (el, done) {
-      // ...
-      done()
-    },
-  },
   data() {
     return {
       seen: true
