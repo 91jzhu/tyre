@@ -30,20 +30,27 @@
     body {
         font-size: var(--font-size)
     }
-
-    .demo {
-        border: 1px solid lightcoral;
-        min-height: 60px;
+    .sider{
+        background: #333;
+        width:200px;
+    }
+    .header{
+        background: #999;
+        height: 100px;
+    }
+    .footer{
+        background: #ccc;
+        height:50px;
     }</style>
 
 <body>
 <div id="app">
     <t-layout>
-        <t-sider class="demo">我是边栏</t-sider>
+        <t-sider>我是边栏</t-sider>
         <t-layout>
-            <t-header class="demo">我是首部</t-header>
-            <t-content class="demo">我是内容</t-content>
-            <t-footer class="demo">我是底部</t-footer>
+            <t-header>我是首部</t-header>
+            <t-content>我是内容</t-content>
+            <t-footer>我是底部</t-footer>
         </t-layout>
     </t-layout>
 </div>

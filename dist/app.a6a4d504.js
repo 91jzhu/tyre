@@ -13303,7 +13303,28 @@ exports.default = void 0;
 //
 //
 //
-var _default = {};
+//
+//
+//
+//
+//
+var _default = {
+  methods: {
+    enter: function enter(el, done) {
+      // ...
+      done();
+    },
+    leave: function leave(el, done) {
+      // ...
+      done();
+    }
+  },
+  data: function data() {
+    return {
+      seen: true
+    };
+  }
+};
 exports.default = _default;
         var $63761c = exports.default || module.exports;
       
@@ -13317,7 +13338,31 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "sider" }, [_vm._t("default")], 2)
+  return _c("transition", { attrs: { name: "fade" } }, [
+    _vm.seen
+      ? _c(
+          "div",
+          { staticClass: "sider" },
+          [
+            _vm._t("default"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "close",
+                on: {
+                  click: function($event) {
+                    _vm.seen = false
+                  }
+                }
+              },
+              [_vm._v("close\n    ")]
+            )
+          ],
+          2
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13620,7 +13665,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50579" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61220" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
