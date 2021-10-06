@@ -30,15 +30,24 @@ Vue.use(plugin)
 new Vue({
     el: "#app",
     methods: {
-        showToast() {
-            this.$toast('你的智商需要充值', {
+        showToast1(){
+            this.showToast('top')
+        },
+        showToast2(){
+            this.showToast('middle')
+        },
+        showToast3(){
+            this.showToast('bottom')
+        },
+        showToast(position) {
+            this.$toast('我是top', {
                 closeButton:{
                     text:"已充值",
                 },
                 enabledHtml:false,
-                position:'middle'
+                position
             })
-        }
+        },
     }
 })
 

@@ -13595,6 +13595,9 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
 var _default2 = {
   props: {
     autoClose: {
@@ -13679,10 +13682,8 @@ exports.default = _default2;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { ref: "toast", staticClass: "toast", class: _vm.toastPosition },
-    [
+  return _c("div", { staticClass: "wrapper", class: _vm.toastPosition }, [
+    _c("div", { ref: "toast", staticClass: "toast" }, [
       _c(
         "div",
         { staticClass: "message" },
@@ -13705,8 +13706,8 @@ exports.default = _default2;
             [_vm._v(_vm._s(_vm.closeButton.text))]
           )
         : _vm._e()
-    ]
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13853,13 +13854,22 @@ _vue.default.use(_plugin.default);
 new _vue.default({
   el: "#app",
   methods: {
-    showToast: function showToast() {
-      this.$toast('你的智商需要充值', {
+    showToast1: function showToast1() {
+      this.showToast('top');
+    },
+    showToast2: function showToast2() {
+      this.showToast('middle');
+    },
+    showToast3: function showToast3() {
+      this.showToast('bottom');
+    },
+    showToast: function showToast(position) {
+      this.$toast('我是top', {
         closeButton: {
           text: "已充值"
         },
         enabledHtml: false,
-        position: 'middle'
+        position: position
       });
     }
   }
