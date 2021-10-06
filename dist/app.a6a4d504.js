@@ -12964,7 +12964,7 @@ var _default = {
     align: {
       type: String,
       validator: function validator(val) {
-        return ['left', 'right', 'center'].includes(val);
+        return ['left', 'right', 'center'].indexOf(val) >= 0;
       }
     }
   },
@@ -13599,11 +13599,11 @@ var _default2 = {
   props: {
     autoClose: {
       type: Boolean,
-      default: true
+      default: false
     },
     autoClassDelay: {
       type: Number,
-      default: 30
+      default: 5
     },
     closeButton: {
       type: Object,
@@ -13617,11 +13617,23 @@ var _default2 = {
     enabledHtml: {
       type: Boolean,
       default: false
+    },
+    position: {
+      type: String,
+      default: 'top',
+      validator: function validator(val) {
+        return ['top', 'middle', 'bottom'].indexOf(val) >= 0;
+      }
     }
   },
   mounted: function mounted() {
     this.updateStyles();
     this.exeautoClose();
+  },
+  computed: {
+    toastPosition: function toastPosition() {
+      return "position-".concat(this.position);
+    }
   },
   methods: {
     updateStyles: function updateStyles() {
@@ -13666,28 +13678,34 @@ exports.default = _default2;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { ref: "toast", staticClass: "toast" }, [
-    _c(
-      "div",
-      { staticClass: "message" },
-      [
-        _vm.enabledHtml
-          ? _c("div", {
-              domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
-            })
-          : _vm._t("default")
-      ],
-      2
-    ),
-    _vm._v(" "),
-    _c("div", { ref: "line", staticClass: "line" }),
-    _vm._v(" "),
-    _vm.closeButton
-      ? _c("span", { staticClass: "close", on: { click: _vm.onClickClose } }, [
-          _vm._v(_vm._s(_vm.closeButton.text))
-        ])
-      : _vm._e()
-  ])
+  return _c(
+    "div",
+    { ref: "toast", staticClass: "toast", class: _vm.toastPosition },
+    [
+      _c(
+        "div",
+        { staticClass: "message" },
+        [
+          _vm.enabledHtml
+            ? _c("div", {
+                domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
+              })
+            : _vm._t("default")
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("div", { ref: "line", staticClass: "line" }),
+      _vm._v(" "),
+      _vm.closeButton
+        ? _c(
+            "span",
+            { staticClass: "close", on: { click: _vm.onClickClose } },
+            [_vm._v(_vm._s(_vm.closeButton.text))]
+          )
+        : _vm._e()
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13812,8 +13830,12 @@ new _vue.default({
   el: "#app",
   methods: {
     showToast: function showToast() {
-      this.$toast('woshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshi', {
-        enabledHtml: false
+      this.$toast('你的智商需要充值', {
+        closeButton: {
+          text: "已充值"
+        },
+        enabledHtml: false,
+        position: 'middle'
       });
     }
   }
@@ -13846,7 +13868,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65428" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62450" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
