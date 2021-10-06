@@ -13,28 +13,29 @@ import Header from './header'
 import Toast from './toast'
 import plugin from './plugin'
 
-Vue.component('t-button',Button)
-Vue.component('t-icon',Icon)
-Vue.component('t-button-group',ButtonGroup)
-Vue.component('t-input',Input)
-Vue.component('t-row',Row)
-Vue.component('t-col',Col)
-Vue.component('t-layout',Layout)
-Vue.component('t-sider',Sider)
-Vue.component('t-content',Content)
-Vue.component('t-footer',Footer)
-Vue.component('t-header',Header)
-Vue.component('t-toast',Toast)
+Vue.component('t-button', Button)
+Vue.component('t-icon', Icon)
+Vue.component('t-button-group', ButtonGroup)
+Vue.component('t-input', Input)
+Vue.component('t-row', Row)
+Vue.component('t-col', Col)
+Vue.component('t-layout', Layout)
+Vue.component('t-sider', Sider)
+Vue.component('t-content', Content)
+Vue.component('t-footer', Footer)
+Vue.component('t-header', Header)
+Vue.component('t-toast', Toast)
 Vue.use(plugin)
 
 new Vue({
     el: "#app",
-    methods:{
-        showToast(){
-            this.$toast('我是message')
+    methods: {
+        showToast() {
+            this.$toast('woshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshi', {
+                enabledHtml:false
+            })
         }
     }
-
 })
 
 

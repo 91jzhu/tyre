@@ -13586,8 +13586,74 @@ exports.default = void 0;
 //
 //
 //
-var _default = {};
-exports.default = _default;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default2 = {
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: true
+    },
+    autoClassDelay: {
+      type: Number,
+      default: 30
+    },
+    closeButton: {
+      type: Object,
+      default: function _default() {
+        return {
+          text: "关闭",
+          callback: undefined
+        };
+      }
+    },
+    enabledHtml: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted() {
+    this.updateStyles();
+    this.exeautoClose();
+  },
+  methods: {
+    updateStyles: function updateStyles() {
+      var _this = this;
+
+      this.$nextTick(function () {
+        _this.$refs.line.style.height = "".concat(_this.$refs.toast.getBoundingClientRect().height, "px");
+      });
+    },
+    exeautoClose: function exeautoClose() {
+      var _this2 = this;
+
+      if (this.autoClose) {
+        setTimeout(function () {
+          _this2.close();
+        }, this.autoClassDelay * 1000);
+      }
+    },
+    close: function close() {
+      this.$el.remove();
+      this.$destroy();
+    },
+    onClickClose: function onClickClose() {
+      this.close();
+
+      if (this.closeButton && typeof this.closeButton.callback === "function") {
+        this.closeButton.callback(this);
+      }
+    }
+  }
+};
+exports.default = _default2;
         var $e84e70 = exports.default || module.exports;
       
       if (typeof $e84e70 === 'function') {
@@ -13600,7 +13666,28 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "toast" }, [_vm._t("default")], 2)
+  return _c("div", { ref: "toast", staticClass: "toast" }, [
+    _c(
+      "div",
+      { staticClass: "message" },
+      [
+        _vm.enabledHtml
+          ? _c("div", {
+              domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
+            })
+          : _vm._t("default")
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _c("div", { ref: "line", staticClass: "line" }),
+    _vm._v(" "),
+    _vm.closeButton
+      ? _c("span", { staticClass: "close", on: { click: _vm.onClickClose } }, [
+          _vm._v(_vm._s(_vm.closeButton.text))
+        ])
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13650,8 +13737,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = {
   install: function install(Vue) {
     Vue.prototype.$toast = function (message) {
+      var toastOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
       var constructor = Vue.extend(_toast.default);
-      var toast = new constructor();
+      var toast = new constructor({
+        propsData: toastOptions
+      });
       toast.$slots.default = [message];
       toast.$mount();
       document.body.appendChild(toast.$el);
@@ -13722,7 +13812,9 @@ new _vue.default({
   el: "#app",
   methods: {
     showToast: function showToast() {
-      this.$toast('我是message');
+      this.$toast('woshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshiwoshi', {
+        enabledHtml: false
+      });
     }
   }
 });
@@ -13754,7 +13846,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57116" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65428" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
