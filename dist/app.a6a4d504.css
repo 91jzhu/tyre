@@ -877,7 +877,16 @@
 .content[data-v-a45bb6] {
   flex-grow: 1;
 }
+@keyframes fade-in-data-v-e84e70 {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
 .toast[data-v-e84e70] {
+  animation: fade-in-data-v-e84e70 1s;
   font-size: 14px;
   min-height: 40px;
   background: rgba(0, 0, 0, 0.75);
