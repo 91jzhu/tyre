@@ -20,8 +20,11 @@
 export default {
   props: {
     autoClose: {
-      type: Boolean,
-      default: false
+      type: [Boolean,Number],
+      default: true,
+      validator(val) {
+        return val === false || typeof val === 'number';
+      }
     },
     autoClassDelay: {
       type: Number,

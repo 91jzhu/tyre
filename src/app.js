@@ -12,40 +12,49 @@ import Footer from './footer'
 import Header from './header'
 import Toast from './toast'
 import plugin from './plugin'
+import Tabs from './tabs'
+import TabsHead from './tabs-head'
+import TabsItem from './tabs-item'
+import TabsBody from './tabs-body'
+import TabsPane from './tabs-pane'
 
 Vue.component('t-button', Button)
 Vue.component('t-icon', Icon)
 Vue.component('t-button-group', ButtonGroup)
+
 Vue.component('t-input', Input)
+
+Vue.component('t-toast', Toast)
+
 Vue.component('t-row', Row)
 Vue.component('t-col', Col)
+
 Vue.component('t-layout', Layout)
 Vue.component('t-sider', Sider)
 Vue.component('t-content', Content)
 Vue.component('t-footer', Footer)
 Vue.component('t-header', Header)
-Vue.component('t-toast', Toast)
+
+Vue.component('t-tabs', Tabs)
+Vue.component('t-tabs-head', TabsHead)
+Vue.component('t-tabs-item', TabsItem)
+Vue.component('t-tabs-body', TabsBody)
+Vue.component('t-tabs-pane', TabsPane)
+
 Vue.use(plugin)
 
 new Vue({
     el: "#app",
+    data:{
+        selectedTab:"car"
+    },
     methods: {
-        showToast1(){
-            this.showToast('top')
-        },
-        showToast2(){
-            this.showToast('middle')
-        },
-        showToast3(){
-            this.showToast('bottom')
-        },
-        showToast(position) {
-            this.$toast('我是top', {
+        showToast() {
+            this.$toast('message', {
                 closeButton:{
-                    text:"已充值",
+                    text:"copy",
                 },
                 enabledHtml:false,
-                position
             })
         },
     }
