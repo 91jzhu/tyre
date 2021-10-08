@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   props:{
     direction:{
@@ -15,13 +17,20 @@ export default {
       }
     },
     selected:{
-      type:String,
+      type:[String,Boolean],
       required:true
     }
   },
-  created(){
-    // this.$emit('update:selected',"")
-  }
+  data(){
+    return{
+      eventBus:new Vue()
+    }
+  },
+  provide(){
+    return{
+      eventBus:this.eventBus
+    }
+  },
 }
 </script>
 

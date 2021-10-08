@@ -6,7 +6,16 @@
 
 <script>
 export default {
-  name: "tabs-pane"
+  props:{
+    name:[String,Number],
+    required:true
+  },
+  inject:['eventBus'],
+  created() {
+    this.eventBus.$on('update:selected', (name)=> {
+      console.log(name);
+    })
+  }
 }
 </script>
 

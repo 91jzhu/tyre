@@ -6,7 +6,11 @@
 
 <script>
 export default {
-  name: "tabs-body"
+  inject:['eventBus'],
+  created(){
+    console.log('爷爷给body');
+    console.log(this.eventBus);
+  }
 }
 </script>
 
