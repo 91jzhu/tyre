@@ -964,15 +964,19 @@
   border: 1px solid red;
   display: flex;
   height: 40px;
-  justify-content: flex-start;
-  align-items: center;
 }
 .tabs-head .actions-wrapper[data-v-16bfd6] {
   margin-left: auto;
 }
 .tabs-item[data-v-6e7d09] {
+  border: 1px solid blue;
   flex-shrink: 0;
   padding: 0 2em;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .tabs-item.active[data-v-6e7d09] {
   background: lightgreen;
