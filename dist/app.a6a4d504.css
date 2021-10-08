@@ -960,3 +960,23 @@
   border-left: 1px solid #666;
   margin-left: 16px;
 }
+.tabs-head[data-v-16bfd6] {
+  border: 1px solid red;
+  display: flex;
+  height: 40px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.tabs-head .actions-wrapper[data-v-16bfd6] {
+  margin-left: auto;
+}
+.tabs-item[data-v-6e7d09] {
+  flex-shrink: 0;
+  padding: 0 2em;
+}
+.tabs-item.active[data-v-6e7d09] {
+  background: lightgreen;
+}
+.tabs-pane.active[data-v-1fdc60] {
+  background: lightgreen;
+}

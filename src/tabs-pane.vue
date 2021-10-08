@@ -1,24 +1,35 @@
 <template>
-  <div class="tabs-pane">
+  <div v-if="active"
+       :class="{active:active}"
+       class="tabs-pane">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  props:{
-    name:[String,Number],
-    required:true
+  data() {
+    return {
+      active: false
+    }
   },
-  inject:['eventBus'],
+  props: {
+    name: [String, Number],
+    required: true
+  },
+  inject: ['eventBus'],
   created() {
-    this.eventBus.$on('update:selected', (name)=> {
-      console.log(name);
+    this.eventBus.$on('update:selected', (name) => {
+      this.active = name === this.name;
     })
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.tabs-pane {
+  &.active {
+    background: lightgreen;
+  }
+}
 </style>

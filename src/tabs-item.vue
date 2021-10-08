@@ -1,5 +1,6 @@
 <template>
   <div @click="xxx"
+       :class="{active:active}"
        class="tabs-item">
     <slot></slot>
   </div>
@@ -7,6 +8,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      active: false
+    }
+  },
   props: {
     disabled: {
       type: [Boolean, String],
@@ -27,13 +33,20 @@ export default {
   },
   inject: ['eventBus'],
   created() {
-    this.eventBus.$on('update:selected', (name)=> {
-      console.log(name);
+    this.eventBus.$on('update:selected', (name) => {
+      this.active = name === this.name;
     })
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.tabs-item {
+  flex-shrink: 0;
+  padding: 0 2em;
 
+  &.active {
+    background: lightgreen;
+  }
+}
 </style>

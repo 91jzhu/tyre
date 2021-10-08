@@ -13836,6 +13836,9 @@ var _default = {
     return {
       eventBus: this.eventBus
     };
+  },
+  mounted: function mounted() {
+    this.eventBus.$emit('update:selected', this.selected);
   }
 };
 exports.default = _default;
@@ -13900,6 +13903,8 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   inject: ['eventBus']
 };
@@ -13919,7 +13924,11 @@ exports.default = _default;
   return _c(
     "div",
     { staticClass: "tabs-head" },
-    [_vm._t("default"), _vm._v(" "), _vm._t("actions")],
+    [
+      _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { staticClass: "actions-wrapper" }, [_vm._t("actions")], 2)
+    ],
     2
   )
 }
@@ -13970,7 +13979,13 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
+  data: function data() {
+    return {
+      active: false
+    };
+  },
   props: {
     disabled: {
       type: [Boolean, String],
@@ -13991,8 +14006,10 @@ var _default = {
   },
   inject: ['eventBus'],
   created: function created() {
+    var _this = this;
+
     this.eventBus.$on('update:selected', function (name) {
-      console.log(name);
+      _this.active = name === _this.name;
     });
   }
 };
@@ -14011,7 +14028,11 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "tabs-item", on: { click: _vm.xxx } },
+    {
+      staticClass: "tabs-item",
+      class: { active: _vm.active },
+      on: { click: _vm.xxx }
+    },
     [_vm._t("default")],
     2
   )
@@ -14130,15 +14151,24 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
+  data: function data() {
+    return {
+      active: false
+    };
+  },
   props: {
     name: [String, Number],
     required: true
   },
   inject: ['eventBus'],
   created: function created() {
+    var _this = this;
+
     this.eventBus.$on('update:selected', function (name) {
-      console.log(name);
+      _this.active = name === _this.name;
     });
   }
 };
@@ -14155,7 +14185,14 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tabs-pane" }, [_vm._t("default")], 2)
+  return _vm.active
+    ? _c(
+        "div",
+        { staticClass: "tabs-pane", class: { active: _vm.active } },
+        [_vm._t("default")],
+        2
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
