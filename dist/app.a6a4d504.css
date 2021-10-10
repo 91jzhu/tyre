@@ -961,7 +961,6 @@
   margin-left: 16px;
 }
 .tabs-head[data-v-16bfd6] {
-  border: 1px solid red;
   display: flex;
   height: 40px;
   position: relative;
@@ -969,8 +968,8 @@
 .tabs-head .line[data-v-16bfd6] {
   position: absolute;
   bottom: 0;
-  width: 100px;
   border-bottom: 2px solid cornflowerblue;
+  transition: all 350ms;
 }
 .tabs-head .actions-wrapper[data-v-16bfd6] {
   margin-left: auto;

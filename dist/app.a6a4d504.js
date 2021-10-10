@@ -13842,9 +13842,9 @@ var _default = {
 
     this.$children.forEach(function (vm) {
       if (vm.$options.name === "t-tabs-head") {
-        vm.$children.forEach(function (item) {
-          if (item.$options.name === "t-tabs-item" && item.name === _this.selected) {
-            _this.eventBus.$emit('update:selected', _this.selected, item);
+        vm.$children.forEach(function (childVm) {
+          if (childVm.$options.name === "t-tabs-item" && childVm.name === _this.selected) {
+            _this.eventBus.$emit('update:selected', _this.selected, childVm);
           }
         });
       }
@@ -13918,10 +13918,16 @@ exports.default = void 0;
 //
 var _default = {
   inject: ['eventBus'],
-  created: function created() {
-    this.eventBus.$on('update:selected', function (item, that) {
-      console.log(item);
-      console.log(that); // console.log(that.$el.getBoundingClientRect())
+  mounted: function mounted() {
+    var _this = this;
+
+    this.eventBus.$on('update:selected', function (item, vm) {
+      var _vm$$el$getBoundingCl = vm.$el.getBoundingClientRect(),
+          width = _vm$$el$getBoundingCl.width,
+          left = _vm$$el$getBoundingCl.left;
+
+      _this.$refs.line.style.width = "".concat(width, "px");
+      _this.$refs.line.style.left = "".concat(left, "px");
     });
   }
 };
@@ -14324,7 +14330,7 @@ _vue.default.use(_plugin.default);
 new _vue.default({
   el: "#app",
   data: {
-    selectedTab: "car"
+    selectedTab: "sports"
   },
   methods: {
     showToast: function showToast() {

@@ -34,9 +34,9 @@ export default {
   mounted(){
     this.$children.forEach((vm)=>{
       if(vm.$options.name==="t-tabs-head"){
-        vm.$children.forEach((item)=>{
-          if(item.$options.name==="t-tabs-item" && item.name===this.selected){
-            this.eventBus.$emit('update:selected',this.selected,item)
+        vm.$children.forEach((childVm)=>{
+          if(childVm.$options.name==="t-tabs-item" && childVm.name===this.selected){
+            this.eventBus.$emit('update:selected',this.selected,childVm)
           }
         })
       }

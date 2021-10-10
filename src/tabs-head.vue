@@ -10,32 +10,33 @@
 
 <script>
 export default {
-  inject:['eventBus'],
-  created(){
-    this.eventBus.$on('update:selected',(item,that)=>{
-      console.log(item);
-      console.log(that);
-      // console.log(that.$el.getBoundingClientRect())
-    })
+  inject: ['eventBus'],
+  mounted() {
+    this.eventBus.$on('update:selected', (item, vm) => {
+        let {width, left} = vm.$el.getBoundingClientRect();
+        this.$refs.line.style.width = `${width}px`
+        this.$refs.line.style.left=`${left}px`;
+      })
   }
 }
 </script>
 
 <style lang="scss" scoped>
-$tab-height:40px;
-$blue:cornflowerblue;
-.tabs-head{
-  border:1px solid red;
+$tab-height: 40px;
+$blue: cornflowerblue;
+.tabs-head {
   display: flex;
-  height:$tab-height;
+  height: $tab-height;
   position: relative;
-  .line{
+
+  .line {
     position: absolute;
-    bottom:0;
-    width:100px;
+    bottom: 0;
     border-bottom: 2px solid $blue;
+    transition: all 350ms;
   }
-  .actions-wrapper{
+
+  .actions-wrapper {
     margin-left: auto;
   }
 }
