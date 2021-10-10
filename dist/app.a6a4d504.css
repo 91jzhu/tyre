@@ -964,15 +964,20 @@
   display: flex;
   height: 40px;
   position: relative;
+  border-bottom: 1px solid #ddd;
 }
 .tabs-head .line[data-v-16bfd6] {
   position: absolute;
   bottom: 0;
-  border-bottom: 2px solid cornflowerblue;
+  border-bottom: 1px solid cornflowerblue;
   transition: all 350ms;
 }
 .tabs-head .actions-wrapper[data-v-16bfd6] {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1em;
 }
 .tabs-item[data-v-6e7d09] {
   flex-shrink: 0;
@@ -987,6 +992,6 @@
   color: cornflowerblue;
   font-weight: bold;
 }
-.tabs-pane.active[data-v-1fdc60] {
-  background: lightgreen;
+.tabs-pane[data-v-1fdc60] {
+  padding: 2em;
 }
