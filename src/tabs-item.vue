@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     xxx() {
-      this.eventBus.$emit('update:selected', this.name)
+      this.eventBus.$emit('update:selected',this.name,this)
     }
   },
   inject: ['eventBus'],
@@ -41,8 +41,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$blue:cornflowerblue;
 .tabs-item {
-  border:1px solid blue;
   flex-shrink: 0;
   padding: 0 2em;
   cursor: pointer;
@@ -51,7 +51,8 @@ export default {
   justify-content: center;
   align-items: center;
   &.active {
-    background: lightgreen;
+    color:$blue;
+    font-weight: bold;
   }
 }
 </style>

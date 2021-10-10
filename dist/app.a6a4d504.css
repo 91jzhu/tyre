@@ -964,12 +964,18 @@
   border: 1px solid red;
   display: flex;
   height: 40px;
+  position: relative;
+}
+.tabs-head .line[data-v-16bfd6] {
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  border-bottom: 2px solid cornflowerblue;
 }
 .tabs-head .actions-wrapper[data-v-16bfd6] {
   margin-left: auto;
 }
 .tabs-item[data-v-6e7d09] {
-  border: 1px solid blue;
   flex-shrink: 0;
   padding: 0 2em;
   cursor: pointer;
@@ -979,7 +985,8 @@
   align-items: center;
 }
 .tabs-item.active[data-v-6e7d09] {
-  background: lightgreen;
+  color: cornflowerblue;
+  font-weight: bold;
 }
 .tabs-pane.active[data-v-1fdc60] {
   background: lightgreen;

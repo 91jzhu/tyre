@@ -13838,7 +13838,17 @@ var _default = {
     };
   },
   mounted: function mounted() {
-    this.eventBus.$emit('update:selected', this.selected);
+    var _this = this;
+
+    this.$children.forEach(function (vm) {
+      if (vm.$options.name === "t-tabs-head") {
+        vm.$children.forEach(function (item) {
+          if (item.$options.name === "t-tabs-item" && item.name === _this.selected) {
+            _this.eventBus.$emit('update:selected', _this.selected, item);
+          }
+        });
+      }
+    });
   }
 };
 exports.default = _default;
@@ -13905,8 +13915,15 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
-  inject: ['eventBus']
+  inject: ['eventBus'],
+  created: function created() {
+    this.eventBus.$on('update:selected', function (item, that) {
+      console.log(item);
+      console.log(that); // console.log(that.$el.getBoundingClientRect())
+    });
+  }
 };
 exports.default = _default;
         var $16bfd6 = exports.default || module.exports;
@@ -13926,6 +13943,8 @@ exports.default = _default;
     { staticClass: "tabs-head" },
     [
       _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { ref: "line", staticClass: "line" }),
       _vm._v(" "),
       _c("div", { staticClass: "actions-wrapper" }, [_vm._t("actions")], 2)
     ],
@@ -14001,7 +14020,7 @@ var _default = {
   },
   methods: {
     xxx: function xxx() {
-      this.eventBus.$emit('update:selected', this.name);
+      this.eventBus.$emit('update:selected', this.name, this);
     }
   },
   inject: ['eventBus'],
@@ -14084,11 +14103,7 @@ exports.default = void 0;
 //
 //
 var _default = {
-  inject: ['eventBus'],
-  created: function created() {
-    console.log('爷爷给body');
-    console.log(this.eventBus);
-  }
+  inject: ['eventBus']
 };
 exports.default = _default;
         var $2ea85e = exports.default || module.exports;
@@ -14350,7 +14365,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53881" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58861" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
