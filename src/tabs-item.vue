@@ -11,7 +11,6 @@ export default {
   data() {
     return {
       active: false,
-      disabled:false
     }
   },
   props: {
@@ -32,11 +31,13 @@ export default {
       if (this.disabled) {
         return
       }
+      this.eventBus &&
       this.eventBus.$emit('update:selected', this.name, this)
     }
   },
   inject: ['eventBus'],
   created() {
+    this.eventBus &&
     this.eventBus.$on('update:selected', (name) => {
       this.active = name === this.name;
     })
@@ -46,7 +47,7 @@ export default {
 
 <style lang="scss" scoped>
 $blue: cornflowerblue;
-$disabled-text-color:grey;
+$disabled-text-color: grey;
 .tabs-item {
   flex-shrink: 0;
   padding: 0 2em;
@@ -60,8 +61,9 @@ $disabled-text-color:grey;
     color: $blue;
     font-weight: bold;
   }
-  &.disabled{
-    color:$disabled-text-color;
+
+  &.disabled {
+    color: $disabled-text-color;
     cursor: not-allowed;
   }
 }

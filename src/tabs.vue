@@ -8,35 +8,39 @@
 import Vue from 'vue'
 
 export default {
-  props:{
-    direction:{
-      type:String,
-      default:'horizontal',
-      validator(val){
-        return ['horizontal','vertical'].indexOf(val)>=0
+  props: {
+    direction: {
+      type: String,
+      default: 'horizontal',
+      validator(val) {
+        return ['horizontal', 'vertical'].indexOf(val) >= 0
       }
     },
-    selected:{
-      type:[String,Boolean],
-      required:true
+    selected: {
+      type: [String, Boolean],
+      required: true
     }
   },
-  data(){
-    return{
-      eventBus:new Vue()
+  data() {
+    return {
+      eventBus: new Vue()
     }
   },
-  provide(){
-    return{
-      eventBus:this.eventBus
+  provide() {
+    return {
+      eventBus: this.eventBus
     }
   },
-  mounted(){
-    this.$children.forEach((vm)=>{
-      if(vm.$options.name==="t-tabs-head"){
-        vm.$children.forEach((childVm)=>{
-          if(childVm.$options.name==="t-tabs-item" && childVm.name===this.selected){
-            this.eventBus.$emit('update:selected',this.selected,childVm)
+  mounted() {
+    if (this.$children.length === 0) {
+      console && console.warn &&
+      console.warn("tabs 中应为 tabs-head 和 tabs-body")
+    }
+    this.$children.forEach((vm) => {
+      if (vm.$options.name === "t-tabs-head") {
+        vm.$children.forEach((childVm) => {
+          if (childVm.$options.name === "t-tabs-item" && childVm.name === this.selected) {
+            this.eventBus.$emit('update:selected', this.selected, childVm)
           }
         })
       }
@@ -46,7 +50,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tabs{
+.tabs {
 
 }
 </style>

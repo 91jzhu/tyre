@@ -17,6 +17,7 @@ import TabsHead from './tabs-head'
 import TabsItem from './tabs-item'
 import TabsBody from './tabs-body'
 import TabsPane from './tabs-pane'
+import Popover from './popover'
 
 Vue.component('t-button', Button)
 Vue.component('t-icon', Icon)
@@ -41,12 +42,14 @@ Vue.component('t-tabs-item', TabsItem)
 Vue.component('t-tabs-body', TabsBody)
 Vue.component('t-tabs-pane', TabsPane)
 
+Vue.component('t-popover', Popover)
+
 Vue.use(plugin)
 
 new Vue({
     el: "#app",
     data:{
-        selectedTab:"sports"
+        selectedTab:"game"
     },
     methods: {
         showToast() {
