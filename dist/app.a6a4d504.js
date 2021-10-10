@@ -14008,7 +14008,8 @@ exports.default = void 0;
 var _default = {
   data: function data() {
     return {
-      active: false
+      active: false,
+      disabled: false
     };
   },
   props: {
@@ -14025,7 +14026,11 @@ var _default = {
     }
   },
   methods: {
-    xxx: function xxx() {
+    onClick: function onClick() {
+      if (this.disabled) {
+        return;
+      }
+
       this.eventBus.$emit('update:selected', this.name, this);
     }
   },
@@ -14055,8 +14060,8 @@ exports.default = _default;
     "div",
     {
       staticClass: "tabs-item",
-      class: { active: _vm.active },
-      on: { click: _vm.xxx }
+      class: { active: _vm.active, disabled: _vm.disabled },
+      on: { click: _vm.onClick }
     },
     [_vm._t("default")],
     2

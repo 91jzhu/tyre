@@ -992,6 +992,10 @@
   color: cornflowerblue;
   font-weight: bold;
 }
+.tabs-item.disabled[data-v-6e7d09] {
+  color: grey;
+  cursor: not-allowed;
+}
 .tabs-pane[data-v-1fdc60] {
   padding: 2em;
 }

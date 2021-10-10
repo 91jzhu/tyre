@@ -1,6 +1,6 @@
 <template>
-  <div @click="xxx"
-       :class="{active:active}"
+  <div @click="onClick"
+       :class="{active:active,disabled}"
        class="tabs-item">
     <slot></slot>
   </div>
@@ -10,7 +10,8 @@
 export default {
   data() {
     return {
-      active: false
+      active: false,
+      disabled:false
     }
   },
   props: {
@@ -27,8 +28,11 @@ export default {
     }
   },
   methods: {
-    xxx() {
-      this.eventBus.$emit('update:selected',this.name,this)
+    onClick() {
+      if (this.disabled) {
+        return
+      }
+      this.eventBus.$emit('update:selected', this.name, this)
     }
   },
   inject: ['eventBus'],
@@ -41,18 +45,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$blue:cornflowerblue;
+$blue: cornflowerblue;
+$disabled-text-color:grey;
 .tabs-item {
   flex-shrink: 0;
   padding: 0 2em;
   cursor: pointer;
-  height:100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+
   &.active {
-    color:$blue;
+    color: $blue;
     font-weight: bold;
+  }
+  &.disabled{
+    color:$disabled-text-color;
+    cursor: not-allowed;
   }
 }
 </style>
