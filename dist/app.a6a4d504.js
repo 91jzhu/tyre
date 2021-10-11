@@ -14280,7 +14280,20 @@ var _default = {
   },
   methods: {
     xxx: function xxx() {
+      var _this = this;
+
       this.visible = !this.visible;
+      console.log('切换visible');
+
+      if (this.visible === true) {
+        this.$nextTick(function () {
+          document.addEventListener('click', function (e) {
+            _this.visible = false;
+            console.log('点击了document');
+            console.log(_this.visible);
+          });
+        });
+      }
     }
   }
 };
@@ -14470,7 +14483,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58861" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54479" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -10,15 +10,23 @@
 <script>
 export default {
   data() {
-    return {
-      visible: false
-    }
+    return {visible: false}
   },
   methods: {
     xxx() {
       this.visible = !this.visible
+      console.log('切换visible');
+      if (this.visible === true) {
+        this.$nextTick(() => {
+          document.addEventListener('click', (e) => {
+            this.visible = false
+            console.log('点击了document');
+            console.log(this.visible);
+          })
+        })
+      }
     }
-  }
+  },
 }
 </script>
 
@@ -27,12 +35,13 @@ export default {
   display: inline-block;
   vertical-align: top;
   position: relative;
-  .content-wrapper{
+
+  .content-wrapper {
     position: absolute;
-    bottom:100%;
-    left:0;
-    border:1px solid lightgreen;
-    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    bottom: 100%;
+    left: 0;
+    border: 1px solid lightgreen;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   }
 }
 </style>
