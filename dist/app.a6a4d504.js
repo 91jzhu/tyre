@@ -14283,15 +14283,16 @@ var _default = {
       var _this = this;
 
       this.visible = !this.visible;
-      console.log('切换visible');
 
       if (this.visible === true) {
+        var eventHandler = function eventHandler() {
+          _this.visible = false;
+          document.removeEventListener('click', eventHandler);
+          console.log('已删除');
+        };
+
         this.$nextTick(function () {
-          document.addEventListener('click', function (e) {
-            _this.visible = false;
-            console.log('点击了document');
-            console.log(_this.visible);
-          });
+          document.addEventListener('click', eventHandler);
         });
       }
     }
@@ -14312,10 +14313,30 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "popover", on: { click: _vm.xxx } },
+    {
+      staticClass: "popover",
+      on: {
+        click: function($event) {
+          $event.stopPropagation()
+          return _vm.xxx.apply(null, arguments)
+        }
+      }
+    },
     [
       _vm.visible
-        ? _c("div", { staticClass: "content-wrapper" }, [_vm._t("content")], 2)
+        ? _c(
+            "div",
+            {
+              staticClass: "content-wrapper",
+              on: {
+                click: function($event) {
+                  $event.stopPropagation()
+                }
+              }
+            },
+            [_vm._t("content")],
+            2
+          )
         : _vm._e(),
       _vm._v(" "),
       _vm._t("default")
@@ -14483,7 +14504,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54479" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55613" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
