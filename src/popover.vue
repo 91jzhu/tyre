@@ -1,9 +1,11 @@
 <template>
   <div class="popover" @click.stop="xxx">
-    <div class="content-wrapper" v-if="visible" @click.stop>
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible" @click.stop>
       <slot name="content"></slot>
     </div>
-    <slot></slot>
+    <span ref="triggerWrapper">
+          <slot></slot>
+    </span>
   </div>
 </template>
 
@@ -16,12 +18,15 @@ export default {
     xxx() {
       this.visible = !this.visible
       if (this.visible === true) {
-        let eventHandler=()=>{
+        let eventHandler = () => {
           this.visible = false
-          document.removeEventListener('click',eventHandler)
-          console.log('已删除');
+          document.removeEventListener('click', eventHandler)
         }
         this.$nextTick(() => {
+          document.body.appendChild(this.$refs.contentWrapper)
+          let {top, left} = this.$refs.triggerWrapper.getBoundingClientRect();
+          this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
+          this.$refs.contentWrapper.style.left = left +window.scrollX+ 'px'
           document.addEventListener('click', eventHandler)
         })
       }
@@ -35,13 +40,12 @@ export default {
   display: inline-block;
   vertical-align: top;
   position: relative;
+}
 
-  .content-wrapper {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    border: 1px solid lightgreen;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-  }
+.content-wrapper {
+  position: absolute;
+  border: 1px solid lightgreen;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  transform: translateY(-100%);
 }
 </style>

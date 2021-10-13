@@ -14272,6 +14272,8 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -14288,10 +14290,17 @@ var _default = {
         var eventHandler = function eventHandler() {
           _this.visible = false;
           document.removeEventListener('click', eventHandler);
-          console.log('已删除');
         };
 
         this.$nextTick(function () {
+          document.body.appendChild(_this.$refs.contentWrapper);
+
+          var _this$$refs$triggerWr = _this.$refs.triggerWrapper.getBoundingClientRect(),
+              top = _this$$refs$triggerWr.top,
+              left = _this$$refs$triggerWr.left;
+
+          _this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
+          _this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
           document.addEventListener('click', eventHandler);
         });
       }
@@ -14327,6 +14336,7 @@ exports.default = _default;
         ? _c(
             "div",
             {
+              ref: "contentWrapper",
               staticClass: "content-wrapper",
               on: {
                 click: function($event) {
@@ -14339,9 +14349,8 @@ exports.default = _default;
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm._t("default")
-    ],
-    2
+      _c("span", { ref: "triggerWrapper" }, [_vm._t("default")], 2)
+    ]
   )
 }
 var staticRenderFns = []
@@ -14504,7 +14513,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55613" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64447" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
