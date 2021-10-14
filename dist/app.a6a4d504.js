@@ -14285,6 +14285,7 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   data: function data() {
     return {
@@ -14304,7 +14305,9 @@ var _default = {
     },
     onClickDocument: function onClickDocument(e) {
       if (!(this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target)))) {
-        this.close();
+        if (!(this.$refs.contentWrapper && this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target))) {
+          this.close();
+        }
       }
     },
     open: function open() {
@@ -14352,21 +14355,18 @@ exports.default = _default;
       _vm.visible
         ? _c(
             "div",
-            {
-              ref: "contentWrapper",
-              staticClass: "content-wrapper",
-              on: {
-                click: function($event) {
-                  $event.stopPropagation()
-                }
-              }
-            },
+            { ref: "contentWrapper", staticClass: "content-wrapper" },
             [_vm._t("content")],
             2
           )
         : _vm._e(),
       _vm._v(" "),
-      _c("span", { ref: "triggerWrapper" }, [_vm._t("default")], 2)
+      _c(
+        "span",
+        { ref: "triggerWrapper", staticStyle: { display: "inline-block" } },
+        [_vm._t("default")],
+        2
+      )
     ]
   )
 }
@@ -14525,7 +14525,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64205" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55173" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
