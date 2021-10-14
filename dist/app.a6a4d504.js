@@ -14315,27 +14315,29 @@ var _default = {
           top = _triggerWrapper$getBo.top,
           left = _triggerWrapper$getBo.left;
 
-      if (this.position === 'top') {
-        contentWrapper.style.top = top + window.scrollY + 'px';
-        contentWrapper.style.left = left + window.scrollX + 'px';
-        console.log('这是top');
-        console.log(contentWrapper.style.left);
-      } else if (this.position === 'bottom') {
-        contentWrapper.style.top = height + top + window.scrollY + 'px';
-        contentWrapper.style.left = left + window.scrollX + 'px';
-      } else if (this.position === 'left') {
-        var _contentWrapper$getBo = contentWrapper.getBoundingClientRect(),
-            height2 = _contentWrapper$getBo.height;
+      var _contentWrapper$getBo = contentWrapper.getBoundingClientRect(),
+          height2 = _contentWrapper$getBo.height;
 
-        contentWrapper.style.top = top + (height - height2) / 2 + window.scrollY + 'px';
-        contentWrapper.style.left = left + window.scrollX + 'px';
-      } else {
-        var _contentWrapper$getBo2 = contentWrapper.getBoundingClientRect(),
-            _height = _contentWrapper$getBo2.height;
-
-        contentWrapper.style.top = top + (height - _height) / 2 + window.scrollY + 'px';
-        contentWrapper.style.left = width + left + window.scrollX + 'px';
-      }
+      var positions = {
+        top: {
+          top: top + window.scrollY,
+          left: left + window.scrollX
+        },
+        bottom: {
+          top: height + top + window.scrollY,
+          left: left + window.scrollX
+        },
+        left: {
+          top: top + (height - height2) / 2 + window.scrollY,
+          left: left + window.scrollX
+        },
+        right: {
+          top: top + (height - height2) / 2 + window.scrollY,
+          left: width + left + window.scrollX
+        }
+      };
+      contentWrapper.style.top = positions[this.position].top + 'px';
+      contentWrapper.style.left = positions[this.position].left + 'px';
     },
     onClickDocument: function onClickDocument(e) {
       if (!(this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target)))) {
