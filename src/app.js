@@ -52,14 +52,9 @@ new Vue({
         selectedTab:"game"
     },
     methods: {
-        showToast() {
-            this.$toast('message', {
-                closeButton:{
-                    text:"copy",
-                },
-                enabledHtml:false,
-            })
-        },
+        yyy(){
+            console.log('yyy');
+        }
     }
 })
 

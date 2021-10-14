@@ -13837,22 +13837,29 @@ var _default = {
       eventBus: this.eventBus
     };
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    if (this.$children.length === 0) {
-      console && console.warn && console.warn("tabs 中应为 tabs-head 和 tabs-body");
-    }
-
-    this.$children.forEach(function (vm) {
-      if (vm.$options.name === "t-tabs-head") {
-        vm.$children.forEach(function (childVm) {
-          if (childVm.$options.name === "t-tabs-item" && childVm.name === _this.selected) {
-            _this.eventBus.$emit('update:selected', _this.selected, childVm);
-          }
-        });
+  methods: {
+    checkChildren: function checkChildren() {
+      if (this.$children.length === 0) {
+        console && console.warn && console.warn("tabs 中应为 tabs-head 和 tabs-body");
       }
-    });
+    },
+    selectTab: function selectTab() {
+      var _this = this;
+
+      this.$children.forEach(function (vm) {
+        if (vm.$options.name === "t-tabs-head") {
+          vm.$children.forEach(function (childVm) {
+            if (childVm.$options.name === "t-tabs-item" && childVm.name === _this.selected) {
+              _this.eventBus.$emit('update:selected', _this.selected, childVm);
+            }
+          });
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.checkChildren();
+    this.selectTab();
   }
 };
 exports.default = _default;
@@ -14274,6 +14281,10 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -14281,28 +14292,42 @@ var _default = {
     };
   },
   methods: {
-    xxx: function xxx() {
+    positionContent: function positionContent() {
+      document.body.appendChild(this.$refs.contentWrapper);
+
+      var _this$$refs$triggerWr = this.$refs.triggerWrapper.getBoundingClientRect(),
+          top = _this$$refs$triggerWr.top,
+          left = _this$$refs$triggerWr.left;
+
+      this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
+      this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
+    },
+    onClickDocument: function onClickDocument(e) {
+      if (!(this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target)))) {
+        this.close();
+      }
+    },
+    open: function open() {
       var _this = this;
 
-      this.visible = !this.visible;
+      this.visible = true;
+      this.$nextTick(function () {
+        _this.positionContent();
 
-      if (this.visible === true) {
-        var eventHandler = function eventHandler() {
-          _this.visible = false;
-          document.removeEventListener('click', eventHandler);
-        };
-
-        this.$nextTick(function () {
-          document.body.appendChild(_this.$refs.contentWrapper);
-
-          var _this$$refs$triggerWr = _this.$refs.triggerWrapper.getBoundingClientRect(),
-              top = _this$$refs$triggerWr.top,
-              left = _this$$refs$triggerWr.left;
-
-          _this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
-          _this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
-          document.addEventListener('click', eventHandler);
-        });
+        document.addEventListener('click', _this.onClickDocument);
+      });
+    },
+    close: function close() {
+      this.visible = false;
+      document.removeEventListener('click', this.onClickDocument);
+    },
+    onClick: function onClick(event) {
+      if (this.$refs.triggerWrapper.contains(event.target)) {
+        if (this.visible === true) {
+          this.close();
+        } else {
+          this.open();
+        }
       }
     }
   }
@@ -14322,15 +14347,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "popover",
-      on: {
-        click: function($event) {
-          $event.stopPropagation()
-          return _vm.xxx.apply(null, arguments)
-        }
-      }
-    },
+    { ref: "popover", staticClass: "popover", on: { click: _vm.onClick } },
     [
       _vm.visible
         ? _c(
@@ -14475,13 +14492,8 @@ new _vue.default({
     selectedTab: "game"
   },
   methods: {
-    showToast: function showToast() {
-      this.$toast('message', {
-        closeButton: {
-          text: "copy"
-        },
-        enabledHtml: false
-      });
+    yyy: function yyy() {
+      console.log('yyy');
     }
   }
 });
@@ -14513,7 +14525,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64447" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64205" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
