@@ -14286,22 +14286,56 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   data: function data() {
     return {
       visible: false
     };
   },
+  props: {
+    position: {
+      type: String,
+      default: 'top',
+      validator: function validator(val) {
+        return ['top', 'bottom', 'left', 'right'].indexOf(val) >= 0;
+      }
+    }
+  },
   methods: {
     positionContent: function positionContent() {
-      document.body.appendChild(this.$refs.contentWrapper);
+      var _this$$refs = this.$refs,
+          contentWrapper = _this$$refs.contentWrapper,
+          triggerWrapper = _this$$refs.triggerWrapper;
+      document.body.appendChild(contentWrapper);
 
-      var _this$$refs$triggerWr = this.$refs.triggerWrapper.getBoundingClientRect(),
-          top = _this$$refs$triggerWr.top,
-          left = _this$$refs$triggerWr.left;
+      var _triggerWrapper$getBo = triggerWrapper.getBoundingClientRect(),
+          width = _triggerWrapper$getBo.width,
+          height = _triggerWrapper$getBo.height,
+          top = _triggerWrapper$getBo.top,
+          left = _triggerWrapper$getBo.left;
 
-      this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
-      this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
+      if (this.position === 'top') {
+        contentWrapper.style.top = top + window.scrollY + 'px';
+        contentWrapper.style.left = left + window.scrollX + 'px';
+        console.log('这是top');
+        console.log(contentWrapper.style.left);
+      } else if (this.position === 'bottom') {
+        contentWrapper.style.top = height + top + window.scrollY + 'px';
+        contentWrapper.style.left = left + window.scrollX + 'px';
+      } else if (this.position === 'left') {
+        var _contentWrapper$getBo = contentWrapper.getBoundingClientRect(),
+            height2 = _contentWrapper$getBo.height;
+
+        contentWrapper.style.top = top + (height - height2) / 2 + window.scrollY + 'px';
+        contentWrapper.style.left = left + window.scrollX + 'px';
+      } else {
+        var _contentWrapper$getBo2 = contentWrapper.getBoundingClientRect(),
+            _height = _contentWrapper$getBo2.height;
+
+        contentWrapper.style.top = top + (height - _height) / 2 + window.scrollY + 'px';
+        contentWrapper.style.left = width + left + window.scrollX + 'px';
+      }
     },
     onClickDocument: function onClickDocument(e) {
       if (!(this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target)))) {
@@ -14355,7 +14389,11 @@ exports.default = _default;
       _vm.visible
         ? _c(
             "div",
-            { ref: "contentWrapper", staticClass: "content-wrapper" },
+            {
+              ref: "contentWrapper",
+              staticClass: "content-wrapper",
+              class: "position-" + _vm.position
+            },
             [_vm._t("content")],
             2
           )
