@@ -1,7 +1,6 @@
 <template>
   <div class="popover"
-       ref="popover"
-       @click="onClick">
+       ref="popover">
     <div ref="contentWrapper"
          class="content-wrapper"
          v-if="visible"
@@ -18,7 +17,41 @@
 <script>
 export default {
   data() {
-    return {visible: false}
+    return {
+      visible: false,
+    }
+  },
+  mounted() {
+    if(this.trigger==='click'){
+      this.$refs.popover.addEventListener('click',this.onClick)
+    }else{
+      this.$refs.popover.addEventListener('mouseenter',this.open)
+      this.$refs.popover.addEventListener('mouseleave',this.close)
+    }
+  },
+  destroyed() {
+    if(this.trigger==='click'){
+      this.$refs.popover.removeEventListener('click',this.onClick)
+    }else{
+      this.$refs.popover.removeEventListener('mouseenter',this.open)
+      this.$refs.popover.removeEventListener('mouseleave',this.close)
+    }
+  },
+  computed: {
+    openEvent() {
+      if (this.trigger === 'click') {
+        return 'click'
+      } else {
+        return 'mouseenter'
+      }
+    },
+    closeEvent() {
+      if (this.trigger === 'click') {
+        return 'click'
+      } else {
+        return 'mouseleave'
+      }
+    }
   },
   props: {
     position: {
@@ -26,6 +59,13 @@ export default {
       default: 'top',
       validator(val) {
         return ['top', 'bottom', 'left', 'right'].indexOf(val) >= 0
+      }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(val) {
+        return ['click', 'hover'].indexOf(val) >= 0;
       }
     }
   },
@@ -41,8 +81,8 @@ export default {
         left: {top: top + (height - height2) / 2 + window.scrollY, left: left + window.scrollX},
         right: {top: top + (height - height2) / 2 + window.scrollY, left: width + left + window.scrollX},
       }
-      contentWrapper.style.top=positions[this.position].top+'px'
-      contentWrapper.style.left=positions[this.position].left+'px'
+      contentWrapper.style.top = positions[this.position].top + 'px'
+      contentWrapper.style.left = positions[this.position].left + 'px'
     },
     onClickDocument(e) {
       if (!(this.$refs.popover &&
