@@ -40,8 +40,8 @@
 <div id="app">
 
     <t-popover position="bottom">
-        <template slot="content">
-            <div>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbb</div>
+        <template slot="content" slot-scope="{close}">
+            <div>pop<t-button @click="close">关闭</t-button></div>
         </template>
             <t-button>点我</t-button>
     </t-popover>

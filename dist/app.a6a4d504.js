@@ -14287,6 +14287,22 @@ exports.default = void 0;
 //
 //
 var _default = {
+  props: {
+    position: {
+      type: String,
+      default: 'top',
+      validator: function validator(val) {
+        return ['top', 'bottom', 'left', 'right'].indexOf(val) >= 0;
+      }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator: function validator(val) {
+        return ['click', 'hover'].indexOf(val) >= 0;
+      }
+    }
+  },
   data: function data() {
     return {
       visible: false
@@ -14321,22 +14337,6 @@ var _default = {
         return 'click';
       } else {
         return 'mouseleave';
-      }
-    }
-  },
-  props: {
-    position: {
-      type: String,
-      default: 'top',
-      validator: function validator(val) {
-        return ['top', 'bottom', 'left', 'right'].indexOf(val) >= 0;
-      }
-    },
-    trigger: {
-      type: String,
-      default: 'click',
-      validator: function validator(val) {
-        return ['click', 'hover'].indexOf(val) >= 0;
       }
     }
   },
@@ -14431,7 +14431,7 @@ exports.default = _default;
             staticClass: "content-wrapper",
             class: "position-" + _vm.position
           },
-          [_vm._t("content")],
+          [_vm._t("content", null, { close: _vm.close })],
           2
         )
       : _vm._e(),

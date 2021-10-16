@@ -5,7 +5,7 @@
          class="content-wrapper"
          v-if="visible"
          :class=`position-${position}`>
-      <slot name="content"></slot>
+      <slot name="content" :close="close"></slot>
     </div>
     <span ref="triggerWrapper"
           style="display: inline-block;">
@@ -16,25 +16,41 @@
 
 <script>
 export default {
+  props: {
+    position: {
+      type: String,
+      default: 'top',
+      validator(val) {
+        return ['top', 'bottom', 'left', 'right'].indexOf(val) >= 0
+      }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(val) {
+        return ['click', 'hover'].indexOf(val) >= 0;
+      }
+    },
+  },
   data() {
     return {
       visible: false,
     }
   },
   mounted() {
-    if(this.trigger==='click'){
-      this.$refs.popover.addEventListener('click',this.onClick)
-    }else{
-      this.$refs.popover.addEventListener('mouseenter',this.open)
-      this.$refs.popover.addEventListener('mouseleave',this.close)
+    if (this.trigger === 'click') {
+      this.$refs.popover.addEventListener('click', this.onClick)
+    } else {
+      this.$refs.popover.addEventListener('mouseenter', this.open)
+      this.$refs.popover.addEventListener('mouseleave', this.close)
     }
   },
   destroyed() {
-    if(this.trigger==='click'){
-      this.$refs.popover.removeEventListener('click',this.onClick)
-    }else{
-      this.$refs.popover.removeEventListener('mouseenter',this.open)
-      this.$refs.popover.removeEventListener('mouseleave',this.close)
+    if (this.trigger === 'click') {
+      this.$refs.popover.removeEventListener('click', this.onClick)
+    } else {
+      this.$refs.popover.removeEventListener('mouseenter', this.open)
+      this.$refs.popover.removeEventListener('mouseleave', this.close)
     }
   },
   computed: {
@@ -50,22 +66,6 @@ export default {
         return 'click'
       } else {
         return 'mouseleave'
-      }
-    }
-  },
-  props: {
-    position: {
-      type: String,
-      default: 'top',
-      validator(val) {
-        return ['top', 'bottom', 'left', 'right'].indexOf(val) >= 0
-      }
-    },
-    trigger: {
-      type: String,
-      default: 'click',
-      validator(val) {
-        return ['click', 'hover'].indexOf(val) >= 0;
       }
     }
   },
@@ -174,13 +174,13 @@ $border-radius: 4px;
     }
 
     &::before {
-      border-top:none;
+      border-top: none;
       border-bottom-color: black;
       bottom: 100%;
     }
 
     &::after {
-      border-top:none;
+      border-top: none;
       border-bottom-color: white;
       bottom: calc(100% - 1px);
     }
