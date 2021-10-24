@@ -5,7 +5,30 @@
 </template>
 
 <script>
-export default {}
+import Vue from 'vue'
+export default {
+  props:{
+    single:{
+      type:[Boolean,String],
+      default:false,
+      validator(val){
+        return ['true','false',true,false].indexOf(val)>=0
+      }
+    }
+  },
+  data(){
+    return{
+      eventBus:new Vue()
+    }
+  },
+  provide(){
+    if(this.single){
+      return{
+        eventBus:this.eventBus
+      }
+    }
+  },
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,7 @@
 <template>
   <div class="collapse-item">
-    <div class="title" @click="isOpen=!isOpen">
-      {{title}}
+    <div class="title" @click="toggle">
+      {{ title }}
     </div>
     <div class="content" v-if="isOpen">
       <slot></slot>
@@ -11,26 +11,50 @@
 
 <script>
 export default {
-  data(){
-    return{
-      isOpen:false
+  data() {
+    return {
+      isOpen: false
     }
   },
   props: {
     title: {
       type: String,
-      required:true,
+      required: true,
+    }
+  },
+  methods: {
+    close() {
+      this.isOpen = false
+    },
+    toggle() {
+      if (this.isOpen) {
+        this.isOpen = false
+      } else {
+        this.isOpen = true
+        this.eventBus && this.eventBus.$emit('update:selected', this)
+      }
+    }
+  },
+  inject: ['eventBus'],
+  mounted() {
+    if (this.eventBus) {
+      this.eventBus.$on('update:selected', (e) => {
+        console.log(e);
+        if (e !== this) {
+          this.close()
+        }
+      })
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-$grey:#ddd;
-$border-radius:4px;
-.collapse-item{
-  > .title{
-    border:1px solid $grey;
+$grey: #ddd;
+$border-radius: 4px;
+.collapse-item {
+  > .title {
+    border: 1px solid $grey;
     margin-top: -1px;
     margin-left: -1px;
     margin-right: -1px;
@@ -38,23 +62,27 @@ $border-radius:4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:0 8px;
+    padding: 0 8px;
   }
-  &:first-child{
-    > .title{
+
+  &:first-child {
+    > .title {
       border-top-left-radius: $border-radius;
       border-top-right-radius: $border-radius;
     }
   }
-  &:last-child{
+
+  &:last-child {
     margin-bottom: -1px;
-    > .title{
+
+    > .title {
       border-bottom-left-radius: $border-radius;
       border-bottom-right-radius: $border-radius;
     }
   }
-  > .content{
-      padding:8px;
+
+  > .content {
+    padding: 8px;
   }
 }
 </style>
