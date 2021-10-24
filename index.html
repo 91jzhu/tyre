@@ -38,66 +38,11 @@
 
 <body>
 <div id="app">
-
-    <t-popover position="bottom">
-        <template slot="content" slot-scope="{close}">
-            <div>pop<t-button @click="close">关闭</t-button></div>
-        </template>
-            <t-button>点我</t-button>
-    </t-popover>
-
-    <t-popover>
-        <template slot="content">
-            <div>cccccccccccccccc</div>
-        </template>
-        <t-button>点我</t-button>
-    </t-popover>
-
-    <t-popover position="left">
-        <template slot="content">
-            <div>cccccccccccccccc</div>
-        </template>
-        <t-button>点我</t-button>
-    </t-popover>
-
-    <t-popover position="right">
-        <template slot="content">
-            <div>cccccccccccccccc</div>
-        </template>
-        <t-button>点我</t-button>
-    </t-popover>
-    <div style="margin: 40px;"></div>
-
-    <t-popover trigger="hover"
-    position="top">
-        <template slot="content">
-            <div>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbb</div>
-        </template>
-        <t-button>点我</t-button>
-    </t-popover>
-    <t-popover position="bottom"
-            trigger="hover">
-        <template slot="content">
-            <div>cccccccccccccccc</div>
-        </template>
-        <t-button>点我</t-button>
-    </t-popover>
-
-    <t-popover position="left"
-            trigger="hover">
-        <template slot="content">
-            <div>cccccccccccccccc</div>
-        </template>
-        <t-button>点我</t-button>
-    </t-popover>
-
-    <t-popover position="right"
-            trigger="hover">
-        <template slot="content">
-            <div>cccccccccccccccc</div>
-        </template>
-        <t-button>点我</t-button>
-    </t-popover>
+    <t-collapse>
+        <t-collapse-item title="标题1">内容1</t-collapse-item>
+        <t-collapse-item title="标题2">内容2</t-collapse-item>
+        <t-collapse-item title="标题3">内容3</t-collapse-item>
+    </t-collapse>
 
 </div>
 
