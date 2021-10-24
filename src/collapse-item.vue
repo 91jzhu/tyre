@@ -17,6 +17,10 @@ export default {
     }
   },
   props: {
+    name: {
+      type: String,
+      required: true
+    },
     title: {
       type: String,
       required: true,
@@ -26,25 +30,37 @@ export default {
     close() {
       this.isOpen = false
     },
+    open(){
+      this.isOpen=true
+    },
     toggle() {
       if (this.isOpen) {
-        this.isOpen = false
+        this.close()
       } else {
-        this.isOpen = true
+        this.open()
         this.eventBus && this.eventBus.$emit('update:selected', this)
       }
     }
   },
   inject: ['eventBus'],
   mounted() {
-    if (this.eventBus) {
-      this.eventBus.$on('update:selected', (e) => {
-        console.log(e);
-        if (e !== this) {
-          this.close()
+      this.eventBus.$on('update:show', (num) => {
+        console.log(123);
+        if (num === this.name) {
+          this.open()
         }
       })
-    }
+
+
+
+    // if (this.eventBus) {
+    //   this.eventBus.$on('update:selected', (e) => {
+    //     console.log(e);
+    //     if (e !== this) {
+    //       this.close()
+    //     }
+    //   })
+    // }
   }
 }
 </script>

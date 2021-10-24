@@ -8,9 +8,13 @@
 import Vue from 'vue'
 export default {
   props:{
+    selected:{
+      type:[String,Number],
+      default:1
+    },
     single:{
       type:[Boolean,String],
-      default:false,
+      default:true,
       validator(val){
         return ['true','false',true,false].indexOf(val)>=0
       }
@@ -28,6 +32,15 @@ export default {
       }
     }
   },
+  mounted(){
+    for(let i=0;i<this.$children.length;i++){
+      if(this.$children[i].$options.propsData.name===this.selected){
+        console.log('应该展开'+`${this.selected}`)
+        this.eventBus.$emit('update:show',this.selected)
+        return
+      }
+    }
+  }
 }
 </script>
 

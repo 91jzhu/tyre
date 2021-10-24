@@ -14497,9 +14497,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 var _default = {
   props: {
+    selected: {
+      type: [String, Number],
+      default: 1
+    },
     single: {
       type: [Boolean, String],
-      default: false,
+      default: true,
       validator: function validator(val) {
         return ['true', 'false', true, false].indexOf(val) >= 0;
       }
@@ -14515,6 +14519,15 @@ var _default = {
       return {
         eventBus: this.eventBus
       };
+    }
+  },
+  mounted: function mounted() {
+    for (var i = 0; i < this.$children.length; i++) {
+      if (this.$children[i].$options.propsData.name === this.selected) {
+        console.log('应该展开' + "".concat(this.selected));
+        this.eventBus.$emit('update:show', this.selected);
+        return;
+      }
     }
   }
 };
@@ -14591,6 +14604,10 @@ var _default = {
     };
   },
   props: {
+    name: {
+      type: String,
+      required: true
+    },
     title: {
       type: String,
       required: true
@@ -14600,11 +14617,14 @@ var _default = {
     close: function close() {
       this.isOpen = false;
     },
+    open: function open() {
+      this.isOpen = true;
+    },
     toggle: function toggle() {
       if (this.isOpen) {
-        this.isOpen = false;
+        this.close();
       } else {
-        this.isOpen = true;
+        this.open();
         this.eventBus && this.eventBus.$emit('update:selected', this);
       }
     }
@@ -14613,15 +14633,20 @@ var _default = {
   mounted: function mounted() {
     var _this = this;
 
-    if (this.eventBus) {
-      this.eventBus.$on('update:selected', function (e) {
-        console.log(e);
+    this.eventBus.$on('update:show', function (num) {
+      console.log(123);
 
-        if (e !== _this) {
-          _this.close();
-        }
-      });
-    }
+      if (num === _this.name) {
+        _this.open();
+      }
+    }); // if (this.eventBus) {
+    //   this.eventBus.$on('update:selected', (e) => {
+    //     console.log(e);
+    //     if (e !== this) {
+    //       this.close()
+    //     }
+    //   })
+    // }
   }
 };
 exports.default = _default;
