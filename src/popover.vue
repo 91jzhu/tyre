@@ -4,7 +4,7 @@
     <div ref="contentWrapper"
          class="content-wrapper"
          v-if="visible"
-         :class=`position-${position}`>
+         :class="`position-${position}`">
       <slot name="content" :close="close"></slot>
     </div>
     <span ref="triggerWrapper"
@@ -121,6 +121,7 @@ export default {
 $border-color: #333;
 $border-radius: 4px;
 .popover {
+  cursor: pointer;
   display: inline-block;
   vertical-align: top;
   position: relative;

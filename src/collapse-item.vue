@@ -13,7 +13,7 @@
 export default {
   data() {
     return {
-      isOpen: false
+      isOpen: false,
     }
   },
   props: {
@@ -27,40 +27,19 @@ export default {
     }
   },
   methods: {
-    close() {
-      this.isOpen = false
-    },
-    open(){
-      this.isOpen=true
-    },
     toggle() {
       if (this.isOpen) {
-        this.close()
+        this.eventBus && this.eventBus.$emit('update:removeSelected', this.name)
       } else {
-        this.open()
-        this.eventBus && this.eventBus.$emit('update:selected', this)
+        this.eventBus && this.eventBus.$emit('update:addSelected', this.name)
       }
     }
   },
   inject: ['eventBus'],
   mounted() {
-      this.eventBus.$on('update:show', (num) => {
-        console.log(123);
-        if (num === this.name) {
-          this.open()
-        }
-      })
-
-
-
-    // if (this.eventBus) {
-    //   this.eventBus.$on('update:selected', (e) => {
-    //     console.log(e);
-    //     if (e !== this) {
-    //       this.close()
-    //     }
-    //   })
-    // }
+    this.eventBus && this.eventBus.$on('update:selected', (names) => {
+      this.isOpen = names.indexOf(this.name) >= 0;
+    })
   }
 }
 </script>

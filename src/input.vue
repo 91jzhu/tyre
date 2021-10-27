@@ -20,7 +20,6 @@
 <script>
 import Icon from './icon.vue'
 export default  {
-  name:"t-input",
   components:{Icon},
   props: {
     content:{

@@ -53,14 +53,6 @@ Vue.use(plugin)
 
 new Vue({
     el: "#app",
-    data:{
-        selectedTab:"game"
-    },
-    methods: {
-        yyy(){
-            console.log('yyy');
-        }
-    }
 })
 
 

@@ -12600,7 +12600,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _icon = _interopRequireDefault(require("./icon"));
+var _icon = _interopRequireDefault(require("./icon.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12619,9 +12619,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 var _default = {
-  name: "t-button",
   components: {
-    Icon: _icon.default
+    't-icon': _icon.default
   },
   props: {
     icon: {},
@@ -12713,7 +12712,7 @@ render._withStripped = true
       
       }
     })();
-},{"./icon":"src/icon.vue","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/button-group.vue":[function(require,module,exports) {
+},{"./icon.vue":"src/icon.vue","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/button-group.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12835,7 +12834,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 var _default = {
-  name: "t-input",
   components: {
     Icon: _icon.default
   },
@@ -14498,12 +14496,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = {
   props: {
     selected: {
-      type: [String, Number],
-      default: 1
+      type: Array
     },
     single: {
       type: [Boolean, String],
-      default: true,
+      default: false,
       validator: function validator(val) {
         return ['true', 'false', true, false].indexOf(val) >= 0;
       }
@@ -14522,13 +14519,31 @@ var _default = {
     }
   },
   mounted: function mounted() {
-    for (var i = 0; i < this.$children.length; i++) {
-      if (this.$children[i].$options.propsData.name === this.selected) {
-        console.log('应该展开' + "".concat(this.selected));
-        this.eventBus.$emit('update:show', this.selected);
-        return;
+    var _this = this;
+
+    this.eventBus.$emit('update:selected', this.selected);
+    this.eventBus.$on('update:addSelected', function (name) {
+      var selectedCopy = JSON.parse(JSON.stringify(_this.selected));
+
+      if (_this.single) {
+        selectedCopy = [name];
+      } else {
+        selectedCopy.push(name);
       }
-    }
+
+      _this.eventBus.$emit('update:selected', selectedCopy);
+
+      _this.$emit('update:selected', selectedCopy);
+    });
+    this.eventBus.$on('update:removeSelected', function (name) {
+      var selectedCopy = JSON.parse(JSON.stringify(_this.selected));
+      var index = selectedCopy.indexOf(name);
+      selectedCopy.splice(index, 1);
+
+      _this.eventBus.$emit('update:selected', selectedCopy);
+
+      _this.$emit('update:selected', selectedCopy);
+    });
   }
 };
 exports.default = _default;
@@ -14614,18 +14629,11 @@ var _default = {
     }
   },
   methods: {
-    close: function close() {
-      this.isOpen = false;
-    },
-    open: function open() {
-      this.isOpen = true;
-    },
     toggle: function toggle() {
       if (this.isOpen) {
-        this.close();
+        this.eventBus && this.eventBus.$emit('update:removeSelected', this.name);
       } else {
-        this.open();
-        this.eventBus && this.eventBus.$emit('update:selected', this);
+        this.eventBus && this.eventBus.$emit('update:addSelected', this.name);
       }
     }
   },
@@ -14633,20 +14641,9 @@ var _default = {
   mounted: function mounted() {
     var _this = this;
 
-    this.eventBus.$on('update:show', function (num) {
-      console.log(123);
-
-      if (num === _this.name) {
-        _this.open();
-      }
-    }); // if (this.eventBus) {
-    //   this.eventBus.$on('update:selected', (e) => {
-    //     console.log(e);
-    //     if (e !== this) {
-    //       this.close()
-    //     }
-    //   })
-    // }
+    this.eventBus && this.eventBus.$on('update:selected', function (names) {
+      _this.isOpen = names.indexOf(_this.name) >= 0;
+    });
   }
 };
 exports.default = _default;
@@ -14797,15 +14794,7 @@ _vue.default.component('t-collapse-item', _collapseItem.default);
 _vue.default.use(_plugin.default);
 
 new _vue.default({
-  el: "#app",
-  data: {
-    selectedTab: "game"
-  },
-  methods: {
-    yyy: function yyy() {
-      console.log('yyy');
-    }
-  }
+  el: "#app"
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon.vue":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./row":"src/row.vue","./col":"src/col.vue","./layout":"src/layout.vue","./sider":"src/sider.vue","./content":"src/content.vue","./footer":"src/footer.vue","./header":"src/header.vue","./toast":"src/toast.vue","./plugin":"src/plugin.js","./tabs":"src/tabs.vue","./tabs-head":"src/tabs-head.vue","./tabs-item":"src/tabs-item.vue","./tabs-body":"src/tabs-body.vue","./tabs-pane":"src/tabs-pane.vue","./popover":"src/popover.vue","./collapse":"src/collapse.vue","./collapse-item":"src/collapse-item.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -14835,7 +14824,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63807" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50378" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

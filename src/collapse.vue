@@ -9,20 +9,19 @@ import Vue from 'vue'
 export default {
   props:{
     selected:{
-      type:[String,Number],
-      default:1
+      type:Array,
     },
     single:{
       type:[Boolean,String],
-      default:true,
+      default:false,
       validator(val){
         return ['true','false',true,false].indexOf(val)>=0
       }
-    }
+    },
   },
   data(){
     return{
-      eventBus:new Vue()
+      eventBus:new Vue(),
     }
   },
   provide(){
@@ -33,13 +32,24 @@ export default {
     }
   },
   mounted(){
-    for(let i=0;i<this.$children.length;i++){
-      if(this.$children[i].$options.propsData.name===this.selected){
-        console.log('应该展开'+`${this.selected}`)
-        this.eventBus.$emit('update:show',this.selected)
-        return
+    this.eventBus.$emit('update:selected',this.selected)
+    this.eventBus.$on('update:addSelected',(name)=>{
+      let selectedCopy=JSON.parse(JSON.stringify(this.selected))
+      if(this.single){
+        selectedCopy=[name]
+      }else{
+        selectedCopy.push(name)
       }
-    }
+      this.eventBus.$emit('update:selected',selectedCopy)
+      this.$emit('update:selected',selectedCopy)
+    })
+    this.eventBus.$on('update:removeSelected',(name)=>{
+      let selectedCopy=JSON.parse(JSON.stringify(this.selected))
+      let index=selectedCopy.indexOf(name)
+      selectedCopy.splice(index,1)
+      this.eventBus.$emit('update:selected',selectedCopy)
+      this.$emit('update:selected',selectedCopy)
+    })
   }
 }
 </script>
