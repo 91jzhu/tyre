@@ -8,7 +8,7 @@
 import "./svg.js"
 export default  {
   name:"t-icon",
-  props:['name']
+  props: ['name']
 }
 </script>
 

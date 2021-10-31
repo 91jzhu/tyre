@@ -53,6 +53,23 @@ Vue.use(plugin)
 
 new Vue({
     el: "#app",
+    created() {
+
+    },
+    methods: {
+        showToast() {
+            this.$toast('我是展示', {
+                autoClassDelay: 3,
+                closeButton: {
+                    text: "知道了",
+                    callback: () => {
+                        console.log('他知道了');
+                    }
+                },
+                position: 'middle'
+            })
+        }
+    }
 })
 
 

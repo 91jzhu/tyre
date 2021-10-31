@@ -2,7 +2,9 @@
   <div :class="colClass"
        :style="colStyle"
        class="col">
-    <slot></slot>
+    <div class="contentWrapper">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -60,7 +62,7 @@ export default {
         paddingRight: this.gutter / 2 + 'px'
       }
     }
-  }
+  },
 }
 </script>
 

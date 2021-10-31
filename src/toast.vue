@@ -1,17 +1,16 @@
 <template>
-  <div class="wrapper"
+  <div class="toastWrapper"
        :class="toastPosition">
-    <div class="toast" ref="toast">
+    <div class="_toast" ref="toast">
       <div class="message">
         <div v-if="enabledHtml"
              v-html="$slots.default[0]"></div>
         <slot v-else></slot>
       </div>
-      <div ref="line"
-           class="line"></div>
       <span class="close"
             @click="onClickClose"
-            v-if="closeButton">{{ closeButton.text }}</span>
+            v-if="closeButton">
+        <span ref="line" class="line" v-if="closeButton"></span>{{ closeButton.text }}</span>
     </div>
   </div>
 </template>
@@ -21,9 +20,10 @@ export default {
   props: {
     autoClose: {
       type: [Boolean,Number],
+      required:false,
       default: true,
       validator(val) {
-        return val === false || typeof val === 'number';
+        return typeof val === 'boolean'|| typeof val === 'number';
       }
     },
     autoClassDelay: {
@@ -32,12 +32,7 @@ export default {
     },
     closeButton: {
       type: Object,
-      default() {
-        return {
-          text: "关闭",
-          callback: undefined
-        }
-      }
+      default:undefined
     },
     enabledHtml: {
       type: Boolean,
@@ -63,9 +58,10 @@ export default {
   methods: {
     updateStyles() {
       this.$nextTick(() => {
-        this.$refs.line.style.height =
-            `${this.$refs.toast.getBoundingClientRect().height}px`
-
+        if(this.$refs.line){
+          this.$refs.line.style.height =
+              `${this.$refs.toast.getBoundingClientRect().height}px`
+        }
       })
     },
     exeautoClose() {
@@ -123,14 +119,14 @@ $animation-duration:300ms;
     opacity: 1;
   }
 }
-.wrapper{
+.toastWrapper{
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
 
   &.position-top {
     top: 0;
-    .toast{
+    ._toast{
       animation: slide-down $animation-duration;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
@@ -140,7 +136,7 @@ $animation-duration:300ms;
   &.position-middle {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    .toast{
+    ._toast{
       animation: fade-in $animation-duration;
     }
   }
@@ -148,14 +144,14 @@ $animation-duration:300ms;
   &.position-bottom {
 
     bottom: 0;
-    .toast{
+    ._toast{
       animation: slide-up $animation-duration;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
   }
 }
-.toast {
+._toast {
   font-size: $font-size;
   min-height: $toast-min-height;
   background: $toast-bg;
@@ -173,6 +169,7 @@ $animation-duration:300ms;
   }
 
   .close {
+    cursor: pointer;
     flex-shrink: 0;
     padding-left: 16px;
     display: flex;
@@ -180,9 +177,10 @@ $animation-duration:300ms;
   }
 
   .line {
+    display: block;
     height: 100%;
     border-left: 1px solid #666;
-    margin-left: 16px;
+    margin-right: 16px;
   }
 }
 </style>

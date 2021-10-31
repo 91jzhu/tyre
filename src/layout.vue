@@ -15,12 +15,13 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$children);
+    console.log(this.$options);
     this.$children.forEach((vm)=>{
       if(vm.$options.name==='t-sider'){
         this.layoutClass.hasSider=true
       }
     })
+    console.log(this.layoutClass);
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div :class="{error}"
-      class="wrapper">
+      class="toastWrapper">
     <input type="text"
            @change="$emit('change',$event.target.value)"
            @input="$emit('input',$event.target.value)"
@@ -20,7 +20,9 @@
 <script>
 import Icon from './icon.vue'
 export default  {
-  components:{Icon},
+  name:"t-input",
+  components:{
+    't-icon':Icon},
   props: {
     content:{
       type:String
@@ -48,10 +50,11 @@ $border-radius:4px;
 $font-size:12px;
 $box-shadow-color:rgba(0,0,0,0.5);
 $red:#F1453D;
-.wrapper{
+.toastWrapper{
   align-items: center;
   font-size: $font-size;
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   > :not(:last-child){
     margin-right: .5em;
   }

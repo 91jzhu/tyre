@@ -25,30 +25,18 @@
         --border-coloc-hover: #666;
     }
 
-    #app {
-        overflow: hidden;
-        padding:50px;
-    }
 
     body {
         font-size: var(--font-size)
     }
-
 </style>
 
 <body>
 <div id="app">
-    <t-input value='jiba'></t-input>
-    <t-input disabled value='content'></t-input>
-    <t-input readonly value='content'></t-input>
-    <t-input error="错误" value='content'></t-input>
-
+    <button @click="showToast">点我</button>
 </div>
 
-<script src="./src/app.js">
-
-</script>
-<script src="//at.alicdn.com/t/font_2836712_y0tr2bc87wc.js"></script>
+<script src="./src/app.js"></script>
 
 </body>
 </html>
