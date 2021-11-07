@@ -2,31 +2,10 @@
   <div>
     <t-code :content="value">
       <t-row gutter="20">
-        <t-col span="12">
+        <t-col span="12" :ipad="{span:6}">
           <div class="child1">grid</div>
         </t-col>
-        <t-col span="12">
-          <div class="child2">grid</div>
-        </t-col>
-      </t-row>
-      <br/>
-      <t-row gutter="20">
-        <t-col span="8">
-          <div class="child1">grid</div>
-        </t-col>
-        <t-col span="8">
-          <div class="child2">grid</div>
-        </t-col>
-        <t-col span="8">
-          <div class="child1">grid</div>
-        </t-col>
-      </t-row>
-      <br/>
-      <t-row gutter="20">
-        <t-col span="4">
-          <div class="child1">grid</div>
-        </t-col>
-        <t-col span="20">
+        <t-col span="12" :ipad="{span:18}">
           <div class="child2">grid</div>
         </t-col>
       </t-row>
@@ -37,6 +16,17 @@
         </t-col>
         <t-col span="10" offset="2">
           <div class="child2">grid</div>
+        </t-col>
+      </t-row><br/>
+      <t-row gutter="20">
+        <t-col span="8" :narrow-pc="{span:6}">
+          <div class="child1">grid</div>
+        </t-col>
+        <t-col span="8" :narrow-pc="{span:12}">
+          <div class="child2">grid</div>
+        </t-col>
+        <t-col span="8" :narrow-pc="{span:6}">
+          <div class="child1">grid</div>
         </t-col>
       </t-row>
     </t-code>

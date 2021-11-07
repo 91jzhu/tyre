@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  inject: ['eventBus'],
   data() {
     return {
       active: false,
@@ -33,9 +34,9 @@ export default {
       }
       this.eventBus &&
       this.eventBus.$emit('update:selected', this.name, this)
+      this.$emit('click',this)
     }
   },
-  inject: ['eventBus'],
   created() {
     this.eventBus &&
     this.eventBus.$on('update:selected', (name) => {

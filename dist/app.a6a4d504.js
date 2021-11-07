@@ -12870,7 +12870,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "wrapper", class: { error: _vm.error } },
+    { staticClass: "toastWrapper", class: { error: _vm.error } },
     [
       _c("input", {
         attrs: { type: "text", readonly: _vm.readonly, disabled: _vm.disabled },
@@ -13787,15 +13787,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 var _default = {
   props: {
-    direction: {
-      type: String,
-      default: 'horizontal',
-      validator: function validator(val) {
-        return ['horizontal', 'vertical'].indexOf(val) >= 0;
-      }
-    },
     selected: {
-      type: [String, Boolean],
+      type: String,
       required: true
     }
   },
@@ -13819,9 +13812,10 @@ var _default = {
       var _this = this;
 
       this.$children.forEach(function (vm) {
-        if (vm.$options.name === "t-tabs-head") {
+        // console.log(vm.$options._componentTag);
+        if (vm.$options._componentTag === "t-tabs-head") {
           vm.$children.forEach(function (childVm) {
-            if (childVm.$options.name === "t-tabs-item" && childVm.name === _this.selected) {
+            if (childVm.$options._componentTag === "t-tabs-item" && childVm.name === _this.selected) {
               _this.eventBus.$emit('update:selected', _this.selected, childVm);
             }
           });
@@ -13904,11 +13898,9 @@ var _default = {
   mounted: function mounted() {
     var _this = this;
 
-    this.eventBus.$on('update:selected', function (item, vm) {
-      var _vm$$el$getBoundingCl = vm.$el.getBoundingClientRect(),
-          width = _vm$$el$getBoundingCl.width,
-          left = _vm$$el$getBoundingCl.left;
-
+    this.eventBus && this.eventBus.$on('update:selected', function (item, vm) {
+      var left = vm.$el.offsetLeft;
+      var width = vm.$el.offsetWidth;
       _this.$refs.line.style.width = "".concat(width, "px");
       _this.$refs.line.style.left = "".concat(left, "px");
     });
@@ -13989,6 +13981,7 @@ exports.default = void 0;
 //
 //
 var _default = {
+  inject: ['eventBus'],
   data: function data() {
     return {
       active: false
@@ -14014,9 +14007,9 @@ var _default = {
       }
 
       this.eventBus && this.eventBus.$emit('update:selected', this.name, this);
+      this.$emit('click', this);
     }
   },
-  inject: ['eventBus'],
   created: function created() {
     var _this = this;
 
@@ -14470,14 +14463,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = {
   props: {
     selected: {
-      type: Array
+      type: Array,
+      required: false
     },
     single: {
-      type: [Boolean, String],
+      type: Boolean,
       default: false,
-      validator: function validator(val) {
-        return ['true', 'false', true, false].indexOf(val) >= 0;
-      }
+      required: false
     }
   },
   data: function data() {
@@ -14486,37 +14478,19 @@ var _default = {
     };
   },
   provide: function provide() {
-    if (this.single) {
-      return {
-        eventBus: this.eventBus
-      };
-    }
+    return {
+      eventBus: this.eventBus
+    };
   },
   mounted: function mounted() {
     var _this = this;
 
-    this.eventBus.$emit('update:selected', this.selected);
-    this.eventBus.$on('update:addSelected', function (name) {
-      var selectedCopy = JSON.parse(JSON.stringify(_this.selected));
-
-      if (_this.single) {
-        selectedCopy = [name];
-      } else {
-        selectedCopy.push(name);
-      }
-
-      _this.eventBus.$emit('update:selected', selectedCopy);
-
-      _this.$emit('update:selected', selectedCopy);
+    this.eventBus.$emit('selected', this.selected);
+    this.eventBus.$on('toClose', function (name) {
+      _this.eventBus.$emit('Close', name);
     });
-    this.eventBus.$on('update:removeSelected', function (name) {
-      var selectedCopy = JSON.parse(JSON.stringify(_this.selected));
-      var index = selectedCopy.indexOf(name);
-      selectedCopy.splice(index, 1);
-
-      _this.eventBus.$emit('update:selected', selectedCopy);
-
-      _this.$emit('update:selected', selectedCopy);
+    this.eventBus.$on('toOpen', function (name) {
+      _this.eventBus.$emit('Open', name, _this.single);
     });
   }
 };
@@ -14587,36 +14561,62 @@ exports.default = void 0;
 //
 //
 var _default = {
+  inject: ['eventBus'],
+  props: {
+    title: {
+      type: String,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    }
+  },
   data: function data() {
     return {
       isOpen: false
     };
   },
-  props: {
-    name: {
-      type: String,
-      required: true
-    },
-    title: {
-      type: String,
-      required: true
-    }
-  },
   methods: {
+    open: function open() {
+      this.isOpen = true;
+    },
+    close: function close() {
+      this.isOpen = false;
+    },
     toggle: function toggle() {
       if (this.isOpen) {
-        this.eventBus && this.eventBus.$emit('update:removeSelected', this.name);
+        this.eventBus.$emit('toClose', this.name);
       } else {
-        this.eventBus && this.eventBus.$emit('update:addSelected', this.name);
+        this.eventBus.$emit('toOpen', this.name);
       }
     }
   },
-  inject: ['eventBus'],
   mounted: function mounted() {
     var _this = this;
 
-    this.eventBus && this.eventBus.$on('update:selected', function (names) {
-      _this.isOpen = names.indexOf(_this.name) >= 0;
+    this.eventBus.$on('selected', function (selected) {
+      if (selected.indexOf(_this.name) >= 0) {
+        _this.open();
+      }
+    });
+    this.eventBus.$on('Open', function (name, single) {
+      if (single) {
+        if (name === _this.name) {
+          _this.open();
+        } else {
+          _this.close();
+        }
+      }
+
+      if (name === _this.name) {
+        _this.open();
+      }
+    });
+    this.eventBus.$on('Close', function (name) {
+      if (name === _this.name) {
+        _this.close();
+      }
     });
   }
 };
@@ -14633,13 +14633,18 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "collapse-item" }, [
+  return _c("div", { staticClass: "collapseItem" }, [
     _c("div", { staticClass: "title", on: { click: _vm.toggle } }, [
       _vm._v("\n    " + _vm._s(_vm.title) + "\n  ")
     ]),
     _vm._v(" "),
     _vm.isOpen
-      ? _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
+      ? _c(
+          "div",
+          { ref: "content", staticClass: "content" },
+          [_vm._t("default")],
+          2
+        )
       : _vm._e()
   ])
 }
@@ -14768,22 +14773,7 @@ _vue.default.component('t-collapse-item', _collapseItem.default);
 _vue.default.use(_plugin.default);
 
 new _vue.default({
-  el: "#app",
-  created: function created() {},
-  methods: {
-    showToast: function showToast() {
-      this.$toast('我是展示', {
-        autoClassDelay: 3,
-        closeButton: {
-          text: "知道了",
-          callback: function callback() {
-            console.log('他知道了');
-          }
-        },
-        position: 'middle'
-      });
-    }
-  }
+  el: "#app"
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon.vue":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./row":"src/row.vue","./col":"src/col.vue","./layout":"src/layout.vue","./sider":"src/sider.vue","./content":"src/content.vue","./footer":"src/footer.vue","./header":"src/header.vue","./toast":"src/toast.vue","./plugin":"src/plugin.js","./tabs":"src/tabs.vue","./tabs-head":"src/tabs-head.vue","./tabs-item":"src/tabs-item.vue","./tabs-body":"src/tabs-body.vue","./tabs-pane":"src/tabs-pane.vue","./popover":"src/popover.vue","./collapse":"src/collapse.vue","./collapse-item":"src/collapse-item.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -14813,7 +14803,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50910" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50560" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

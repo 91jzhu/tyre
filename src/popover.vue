@@ -136,6 +136,7 @@ $border-radius: 4px;
   background: white;
   max-width: 20em;
   word-break: break-all;
+  z-index: 10;
 
   &::before, &::after {
     content: "";

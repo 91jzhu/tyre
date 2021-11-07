@@ -6,59 +6,46 @@
 
 <script>
 import Vue from 'vue'
+
 export default {
   props:{
     selected:{
       type:Array,
+      required: false
     },
     single:{
-      type:[Boolean,String],
+      type:Boolean,
       default:false,
-      validator(val){
-        return ['true','false',true,false].indexOf(val)>=0
-      }
-    },
-  },
-  data(){
-    return{
-      eventBus:new Vue(),
+      required:false
     }
   },
-  provide(){
-    if(this.single){
-      return{
-        eventBus:this.eventBus
-      }
+  data() {
+    return {
+      eventBus: new Vue(),
+    }
+  },
+  provide() {
+    return {
+      eventBus: this.eventBus
     }
   },
   mounted(){
-    this.eventBus.$emit('update:selected',this.selected)
-    this.eventBus.$on('update:addSelected',(name)=>{
-      let selectedCopy=JSON.parse(JSON.stringify(this.selected))
-      if(this.single){
-        selectedCopy=[name]
-      }else{
-        selectedCopy.push(name)
-      }
-      this.eventBus.$emit('update:selected',selectedCopy)
-      this.$emit('update:selected',selectedCopy)
+    this.eventBus.$emit('selected',this.selected)
+    this.eventBus.$on('toClose',(name)=>{
+      this.eventBus.$emit('Close',name)
     })
-    this.eventBus.$on('update:removeSelected',(name)=>{
-      let selectedCopy=JSON.parse(JSON.stringify(this.selected))
-      let index=selectedCopy.indexOf(name)
-      selectedCopy.splice(index,1)
-      this.eventBus.$emit('update:selected',selectedCopy)
-      this.$emit('update:selected',selectedCopy)
+    this.eventBus.$on('toOpen',(name)=>{
+      this.eventBus.$emit('Open',name,this.single)
     })
   }
 }
 </script>
 
-<style lang="scss" scoped>
-$grey:#ddd;
-$border-radius:4px;
-.collapse{
-  border:1px solid $grey;
-  border-radius:$border-radius;
+<style scoped lang="scss">
+$grey: #ddd;
+$border-radius: 4px;
+.collapse {
+  border: 1px solid $grey;
+  border-radius: $border-radius;
 }
 </style>

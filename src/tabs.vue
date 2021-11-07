@@ -9,15 +9,8 @@ import Vue from 'vue'
 
 export default {
   props: {
-    direction: {
-      type: String,
-      default: 'horizontal',
-      validator(val) {
-        return ['horizontal', 'vertical'].indexOf(val) >= 0
-      }
-    },
     selected: {
-      type: [String, Boolean],
+      type: String,
       required: true
     }
   },
@@ -31,18 +24,19 @@ export default {
       eventBus: this.eventBus
     }
   },
-  methods:{
-    checkChildren(){
+  methods: {
+    checkChildren() {
       if (this.$children.length === 0) {
         console && console.warn &&
         console.warn("tabs 中应为 tabs-head 和 tabs-body")
       }
     },
-    selectTab(){
+    selectTab() {
       this.$children.forEach((vm) => {
-        if (vm.$options.name === "t-tabs-head") {
+        // console.log(vm.$options._componentTag);
+        if (vm.$options._componentTag === "t-tabs-head") {
           vm.$children.forEach((childVm) => {
-            if (childVm.$options.name === "t-tabs-item" && childVm.name === this.selected) {
+            if (childVm.$options._componentTag === "t-tabs-item" && childVm.name === this.selected) {
               this.eventBus.$emit('update:selected', this.selected, childVm)
             }
           })

@@ -56,6 +56,7 @@ $border-color-hover:#666;
 }
 
 .t-button {
+  cursor: pointer;
   vertical-align: middle;
   display: inline-flex;
   flex-wrap: nowrap;

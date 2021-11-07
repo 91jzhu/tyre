@@ -121,6 +121,7 @@ $animation-duration:300ms;
 }
 .toastWrapper{
   position: fixed;
+  z-index: 20;
   left: 50%;
   transform: translateX(-50%);
 

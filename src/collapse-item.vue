@@ -1,9 +1,9 @@
 <template>
-  <div class="collapse-item">
+  <div class="collapseItem">
     <div class="title" @click="toggle">
       {{ title }}
     </div>
-    <div class="content" v-if="isOpen">
+    <div class="content" ref="content" v-if="isOpen">
       <slot></slot>
     </div>
   </div>
@@ -11,43 +11,71 @@
 
 <script>
 export default {
+  inject: ['eventBus'],
+  props: {
+    title: {
+      type: String,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       isOpen: false,
     }
   },
-  props: {
-    name: {
-      type: String,
-      required: true
-    },
-    title: {
-      type: String,
-      required: true,
-    }
-  },
   methods: {
+    open() {
+      this.isOpen = true
+    },
+    close() {
+      this.isOpen = false
+    },
     toggle() {
       if (this.isOpen) {
-        this.eventBus && this.eventBus.$emit('update:removeSelected', this.name)
+        this.eventBus.$emit('toClose', this.name)
       } else {
-        this.eventBus && this.eventBus.$emit('update:addSelected', this.name)
+        this.eventBus.$emit('toOpen', this.name)
       }
     }
   },
-  inject: ['eventBus'],
   mounted() {
-    this.eventBus && this.eventBus.$on('update:selected', (names) => {
-      this.isOpen = names.indexOf(this.name) >= 0;
+    this.eventBus.$on('selected',(selected)=>{
+      if(selected.indexOf(this.name)>=0){
+        this.open()
+      }
+    })
+    this.eventBus.$on('Open', (name, single) => {
+      if(single){
+        if (name === this.name) {
+          this.open()
+        }else{
+          this.close()
+        }
+      }
+      if (name === this.name) {
+        this.open()
+      }
+    })
+    this.eventBus.$on('Close', (name) => {
+      if (name === this.name) {
+        this.close()
+      }
     })
   }
+
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 $grey: #ddd;
 $border-radius: 4px;
-.collapse-item {
+.collapseItem {
+  cursor: pointer;
+
   > .title {
     border: 1px solid $grey;
     margin-top: -1px;
@@ -55,9 +83,9 @@ $border-radius: 4px;
     margin-right: -1px;
     min-height: 32px;
     display: flex;
-    justify-content: center;
     align-items: center;
     padding: 0 8px;
+    background: lighten($grey, 8%);
   }
 
   &:first-child {
@@ -68,9 +96,7 @@ $border-radius: 4px;
   }
 
   &:last-child {
-    margin-bottom: -1px;
-
-    > .title {
+    > .title:last-child {
       border-bottom-left-radius: $border-radius;
       border-bottom-right-radius: $border-radius;
     }

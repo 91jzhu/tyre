@@ -26,11 +26,21 @@
 
     body {
         font-size: var(--font-size)
+    }
+    #app{
+        padding:100px;
     }</style>
 
 <body>
 <div id="app">
-    <button @click="showToast">点我</button>
+    <t-collapse :selected="['1','3']">
+        <t-collapse-item title="标题1" name="1">内容1</t-collapse-item>
+        <t-collapse-item title="标题2" name="2">内容2</t-collapse-item>
+        <t-collapse-item title="标题3" name="3">内容3</t-collapse-item>
+<!--        <t-collapse-item title="标题4" name="4">内容4</t-collapse-item>-->
+<!--        <t-collapse-item title="标题5" name="5">内容5</t-collapse-item>-->
+<!--        <t-collapse-item title="标题6" name="6">内容6</t-collapse-item>-->
+    </t-collapse>
 </div>
 
 <script src="/app.a6a4d504.js"></script>
