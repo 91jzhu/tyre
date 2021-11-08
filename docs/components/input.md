@@ -1,7 +1,7 @@
 ---
 sidebarDepth: 2
 ---
-# 输入框
+# 输入框 | input
 
 ## 使用方法
 
@@ -14,4 +14,7 @@ sidebarDepth: 2
 绑定 readonly 来让用户只读，但仍可获取焦点
 
 绑定 error 为你想要显示的错误时的提示
+
+<ClientOnly>
 <input-demos></input-demos>
+</ClientOnly>

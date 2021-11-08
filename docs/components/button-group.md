@@ -1,7 +1,7 @@
 ---
 sidebarDepth: 2
 ---
-# 按钮盒
+# 按钮盒 | button-group
 
 ## 使用方法
 
@@ -11,7 +11,9 @@ sidebarDepth: 2
 
 同时其中的 icon 也是可选的
 
+<ClientOnly>
 <button-group-demos></button-group-demos>
+</ClientOnly>
 
 
 

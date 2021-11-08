@@ -1,7 +1,7 @@
 ---
 sidebarDepth: 2
 ---
-# 手风琴
+# 手风琴 | collapse
 
 ## 使用方法
 
@@ -13,4 +13,6 @@ sidebarDepth: 2
 
 <strong>请注意，selected 中元素的类型必须为 String，也就是必须和 name 的类型一致</strong>
 
+<ClientOnly>
 <accordion-demos></accordion-demos>
+</ClientOnly>

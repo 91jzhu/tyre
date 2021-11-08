@@ -1,7 +1,7 @@
 ---
 sidebarDepth: 2
 ---
-# 按钮
+# 按钮 | button
 
 ## 使用方法
 
@@ -13,5 +13,7 @@ sidebarDepth: 2
 
 甚至可以禁用按钮，绑定 disabled 属性即可
 
+<ClientOnly>
 <button-demos></button-demos>
+</ClientOnly>
 

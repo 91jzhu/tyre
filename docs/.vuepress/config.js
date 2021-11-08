@@ -1,4 +1,5 @@
 module.exports = {
+    base:'/tyre-ui/',
     title: 'tyre-ui',
     description: '有点意思的 UI 框架',
     themeConfig: {

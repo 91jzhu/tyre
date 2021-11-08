@@ -1,7 +1,7 @@
 ---
 sidebarDepth: 2
 ---
-# Tab 切换
+# Tab 切换 | tabs
 
 ## 使用方法
 
@@ -13,4 +13,6 @@ sidebarDepth: 2
 
 <strong>请注意，tabs 里面最好只包含 tabs-head 和 tabs-body</strong>
 
+<ClientOnly>
 <tabs-demos></tabs-demos>
+</ClientOnly>

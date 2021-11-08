@@ -1,7 +1,7 @@
 ---
 sidebarDepth: 2
 ---
-# 栅格布局
+# 栅格布局 | grid
 
 ## 使用方法
 
@@ -24,4 +24,6 @@ sidebarDepth: 2
         widePc >= 1200px
 ```
 
+<ClientOnly>
 <grid-demos></grid-demos>
+</ClientOnly>

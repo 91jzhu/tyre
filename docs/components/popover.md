@@ -1,7 +1,7 @@
 ---
 sidebarDepth: 2
 ---
-# 气泡卡片
+# 气泡卡片 | popover
 
 ## 使用方法
 
@@ -13,4 +13,6 @@ sidebarDepth: 2
 
 选择 click 激活，你可以处理 popover内容而不会导致其关闭，因为在 click 方式下，点击其他地方会造成 popover 的关闭
 
+<ClientOnly>
 <popover-demos></popover-demos>
+</ClientOnly>

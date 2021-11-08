@@ -1,7 +1,7 @@
 ---
 sidebarDepth: 2
 ---
-# 布局
+# 布局 | layout
 
 ## 使用方法
 
@@ -9,4 +9,6 @@ sidebarDepth: 2
 
 我们取消了侧边栏关闭按钮的设计，让您可以更自由地封装
 
+<ClientOnly>
 <layout-demos></layout-demos>
+</ClientOnly>
