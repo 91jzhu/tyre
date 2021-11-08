@@ -1,7 +1,6 @@
 # 安装
 
-1. 使用 npm 来安装
+使用 npm 来安装
 ```
-npm install tyrei
+npm i --save tyre-ui
 ```
-2.

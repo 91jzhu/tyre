@@ -31,7 +31,7 @@
 
 2. 安装tyre
    ```
-   npm i --save tyrei
+   npm i --save tyre-ui
    ```
    
 3. 引入tyre
