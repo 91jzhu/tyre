@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>快速上手 | tyre-ui</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="有点意思的 UI 框架">
+    
+    <link rel="preload" href="/tyre-ui/assets/css/0.styles.f6390ca1.css" as="style"><link rel="preload" href="/tyre-ui/assets/js/app.40e83575.js" as="script"><link rel="preload" href="/tyre-ui/assets/js/2.870606d4.js" as="script"><link rel="preload" href="/tyre-ui/assets/js/26.da0b5bc1.js" as="script"><link rel="prefetch" href="/tyre-ui/assets/js/10.2a5bd00d.js"><link rel="prefetch" href="/tyre-ui/assets/js/11.5c1f7f8c.js"><link rel="prefetch" href="/tyre-ui/assets/js/12.e000262f.js"><link rel="prefetch" href="/tyre-ui/assets/js/13.bb1698f3.js"><link rel="prefetch" href="/tyre-ui/assets/js/14.0c6b8873.js"><link rel="prefetch" href="/tyre-ui/assets/js/15.6687e0fc.js"><link rel="prefetch" href="/tyre-ui/assets/js/16.51e7f7b3.js"><link rel="prefetch" href="/tyre-ui/assets/js/17.89e88c00.js"><link rel="prefetch" href="/tyre-ui/assets/js/18.d2ef53f8.js"><link rel="prefetch" href="/tyre-ui/assets/js/19.547ca483.js"><link rel="prefetch" href="/tyre-ui/assets/js/20.5eef780c.js"><link rel="prefetch" href="/tyre-ui/assets/js/21.c623eb88.js"><link rel="prefetch" href="/tyre-ui/assets/js/22.fedaf6a5.js"><link rel="prefetch" href="/tyre-ui/assets/js/23.ba50c086.js"><link rel="prefetch" href="/tyre-ui/assets/js/24.903db44b.js"><link rel="prefetch" href="/tyre-ui/assets/js/25.6aa0ed3d.js"><link rel="prefetch" href="/tyre-ui/assets/js/27.34912dd6.js"><link rel="prefetch" href="/tyre-ui/assets/js/3.34b9a82d.js"><link rel="prefetch" href="/tyre-ui/assets/js/4.5886ecbe.js"><link rel="prefetch" href="/tyre-ui/assets/js/5.95c87fba.js"><link rel="prefetch" href="/tyre-ui/assets/js/6.e0f06f88.js"><link rel="prefetch" href="/tyre-ui/assets/js/7.5f1f39f0.js"><link rel="prefetch" href="/tyre-ui/assets/js/8.0cebf3aa.js"><link rel="prefetch" href="/tyre-ui/assets/js/9.c5286a34.js">
+    <link rel="stylesheet" href="/tyre-ui/assets/css/0.styles.f6390ca1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/tyre-ui/" class="home-link router-link-active"><!----> <span class="site-name">tyre-ui</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>入门</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/tyre-ui/install/" class="sidebar-link">安装</a></li><li><a href="/tyre-ui/get-started/" aria-current="page" class="active sidebar-link">快速上手</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/tyre-ui/get-started/#介绍" class="sidebar-link">介绍</a></li><li class="sidebar-sub-header"><a href="/tyre-ui/get-started/#开始使用" class="sidebar-link">开始使用</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>组件</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="快速上手"><a href="#快速上手" class="header-anchor">#</a> 快速上手</h1> <h2 id="介绍"><a href="#介绍" class="header-anchor">#</a> 介绍</h2> <p>这是我在学习 Vue 时做的 UI 框架，希望对你有用</p> <h2 id="开始使用"><a href="#开始使用" class="header-anchor">#</a> 开始使用</h2> <ol><li><p>添加 CSS 样式</p> <p>使用本框架前，请CSS中开启 border-box</p> <div class="language- extra-class"><pre class="language-text"><code>*, *::before, *::after{ box-sizing: border-box; }
+</code></pre></div><p>IE 8 及以上浏览器都支持此样式
+你还需要设置默认颜色等变量</p> <div class="language- extra-class"><pre class="language-text"><code>html {
+    $button-height: 32px;
+    $font-size: 14px;
+    $button-bg: white;
+    $button-active-bg: #eee;
+    $border-radius: 4px;
+    $color: #333;
+    $border-color: #999;
+    $border-coloc-hover: #666;
+}
+</code></pre></div><p>IE 15 及以上浏览器都支持此样式</p></li> <li><p>引入tyre-ui</p> <div class="language- extra-class"><pre class="language-text"><code>import {Button,ButtonGroup,Icon} from 'tyre-ui'
+import 'tyre-ui/dist/index.css'
+
+export default {
+    name: 'App',
+    components: {
+        't-button':Button,
+        &quot;t-icon&quot;:Icon
+     }
+}
+</code></pre></div></li> <li><p>引入 svg symbols</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;script src=&quot;//at.alicdn.com/t/font_2836712_oyveajskrej.js&quot;&gt;&lt;/script&gt;
+</code></pre></div></li></ol></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/tyre-ui/install/" class="prev">
+        安装
+      </a></span> <span class="next"><a href="/tyre-ui/components/button.html">
+        按钮 | button
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/tyre-ui/assets/js/app.40e83575.js" defer></script><script src="/tyre-ui/assets/js/2.870606d4.js" defer></script><script src="/tyre-ui/assets/js/26.da0b5bc1.js" defer></script>
+  </body>
+</html>
